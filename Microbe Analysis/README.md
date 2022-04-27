@@ -9,17 +9,17 @@ In doing so, we will be trying to answer the following questions:
 * Are some bacteria highly correlated to another bacterial phyla?
 * Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?
 * Is there a correlation between bacteria found on keyboard keys and on finger tips?
-
-**Important:** The sklearn library is required 
 <p>&nbsp;</p>
 
-### Are some bacteria highly correlated to another bacterial phyla?
-<p>&nbsp;</p>
+<p align="center";>
+<font size="6">Are some bacteria highly correlated to another bacterial phyla?</font>
 
 **Plot 1:** Heatmap that shows the correlations between the relative abundances of the different Phyla
-![](heatmap_microbe.png)
+<!-- ![](heatmap_microbe.png) -->
+<img src="heatmap_microbe.png"/>
 
 We can see a significant positive correlation between the *Bacteroidetes* and *Firmucites* as well as a strong negative correlation between *Actinobacteria* and *Firmicutes*
+</p>
 <p>&nbsp;</p>
 
 ### Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?
