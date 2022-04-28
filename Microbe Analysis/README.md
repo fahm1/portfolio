@@ -5,7 +5,7 @@ Data is adapted from the publicly available data for the [2010 Fierer et al. pap
 In this project, we will analyze bacterial phyla that were found on keyboard keys as well as on finger tips. We will also take a look at this data on an individual basis. 
 
 In doing so, we will be trying to answer the following questions:   
-* Are some bacteria highly correlated to another bacterial phyla?
+* Are some bacterial phyla highly correlated to another bacterial phyla?
 * Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?
 * Is there a correlation between bacteria found on keyboard keys and on finger tips?
 
