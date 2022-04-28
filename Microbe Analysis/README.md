@@ -33,7 +33,7 @@ We can see see that individuals M3 and M9 are fairly similar, while individual M
 <h3 align="center";>
 <b>Plot 3:</b> 2D scatterplot showing observations using PCA with colors to distinguish each of the three individuals    
 </h3>
-<p align="center"><img src="High Resolution Visualizations\pca_indiv.png" width=800px></p>
+<p align="center"><img src="pca_indiv.png" width=800px></p>
 We can see that there are 3 mostly distinct groups differing by individual. We can also see that the individual M2 is much more different than the other individuals, but that there is still some significant difference between individuals M3 and M9 as well.
 
 ---
@@ -44,7 +44,7 @@ Now, instead of looking at the bacteria by individual, we want to see if there a
 <h3 align="center";>
 <b>Plot 4:</b>2D scatterplot showing observations using PCA with colors to distinguish sample locations
 </h3>
-<p align="center"><img src="High Resolution Visualizations\pca_loc.png" width=800px></p>
+<p align="center"><img src="pca_loc.png" width=800px></p>
 We can see that no distinct groups of bacteria were found on keyboard keys and on finger tips, implying that the bacteria found on keyboard keys and on finger tips are largely the same.
 
 ---
@@ -54,7 +54,7 @@ We can also take a look at using TSNE instead of PCA as a different form of dime
 <h3 align="center";>
 <b>Plot 5:</b>2D scatterplot showing all of the observations using TSNE with colors to distinguish sample locations
 </h3>
-<p align="center"><img src="High Resolution Visualizations\tsne_m3.png" width=800px></p>
+<p align="center"><img src="tsne_m3.png" width=800px></p>
 <p align="center">
 Once again, no distinct groups are found, implying that the bacteria found on keyboard keys and on finger tips are likely one and the same. 
 </p>
