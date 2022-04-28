@@ -12,14 +12,7 @@ In doing so, we will be trying to answer the following questions:
 <p>&nbsp;</p>
 
 
-
-
-
-
-
-<p align="center";>
-<font size="5">Are some bacteria highly correlated to another bacterial phyla?</font>
-</p>
+<p style="font-size:20px;" align="center";>Are some bacteria highly correlated to another bacterial phyla?</p>  
 
 <p align="center";>
 <b>Plot 1:</b> Heatmap that shows the correlations between the relative abundances of the different Phyla
@@ -32,13 +25,7 @@ We can see a significant positive correlation between the <i>Bacteroidetes</i> a
 <p>&nbsp;</p>
 
 
-
-
-
-
-<p align="center";>
-<font size="5">Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?</font>
-</p>
+<p style="font-size:20px;" align="center";>Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?</p>
 
 <p align="center";>
 <b>Plot 2:</b> Parallel coordinates plot to show how phylum abundances vary between individuals
@@ -50,12 +37,7 @@ We can see see that individuals M3 and M9 are fairly similar, while individual M
 <p>&nbsp;</p>
 
 
-
-
-
-<p align="center";>
-<font size="5">Do bacterial communities found on keyboard keys and fingertips differ from one individual to another?</font>
-</p>
+<p style="font-size:20px;" align="center";>Do bacterial communities found on keyboard keys and fingertips differ from one individual to another?</p>
 
 <p align="center";>
 <b>Plot 3:</b> 2D scatterplot showing all of the observations using PCA with colors to distinguish each of the three individuals
@@ -68,9 +50,7 @@ We can see that there are 3 mostly distinct groups differing by individual. We c
 <p>&nbsp;</p>
 
 
-<p align="center";>
-<font size="5">Is there a correlation between bacteria found on keyboard keys and on finger tips?</font>
-</p>
+<p style="font-size:20px;" align="center";>Is there a correlation between bacteria found on keyboard keys and on finger tips?</p>
 
 <p align="center";>
 Now, instead of looking at the bacteria by individual, we want to see if there are differences between the bacteria found on keyboard keys and on finger tips.
@@ -94,8 +74,9 @@ In this case, we will look specifically at individual M3
 </p>
 <p>&nbsp;</p>
 
+
 <p align="center";>
-<b>Plot 4:</b>2D scatterplot showing all of the observations using TSNE with colors to distinguish sample locations
+<b>Plot 5:</b>2D scatterplot showing all of the observations using TSNE with colors to distinguish sample locations
 <img src="tsne_m3.png"/>
 </p>
 
