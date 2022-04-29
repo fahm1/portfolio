@@ -46,8 +46,8 @@ Now, instead of looking at the bacteria by individual, we want to see if there a
 </h3>
 <p align="center"><img src="pca_loc.png" width=800px></p>
 We can see that no distinct groups of bacteria were found on keyboard keys and on finger tips, implying that the bacteria found on keyboard keys and on finger tips are largely the same.
-
----
+</br>
+</br>
 
 We can also take a look at using TSNE instead of PCA as a different form of dimensionality reduction to see if there is a difference in the bacteria found on keyboard keys and on finger tips. In this case, we will look specifically at individual M3
 
