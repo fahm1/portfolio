@@ -84,6 +84,6 @@ In doing so, we will be trying to answer the following questions:
 <p align="center"><img src="Microbe%20Analysis/pcp_microbe.png"/></p>
 
 <h3 align="center";>
-<b>Sample 3:</b> 2D scatterplot showing observations using PCA with colors to distinguish each of the three individuals    
+<b>Sample 3:</b> 2D scatterplot showing bacterial grouping observations using PCA with colors to distinguish each of the three analyzed individuals    
 </h3>
 <p align="center"><img src="Microbe%20Analysis/pca_indiv.png" width=800px></p>
