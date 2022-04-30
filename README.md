@@ -5,10 +5,11 @@ This is a repository to highlight portfolio projects.
 <h3>Table of Contents:</h3>
 
 1. [Project 1: Troll Tweet Analysis](#Project-1)
+    * [Sample Visualizations](#Sample-1)
 2. [Project 2: Movie Media Analysis](#Project-2)
+    * [Sample Visualizations](#Sample-2)
 3. [Project 3: Microbe Analysis](#Project-3)
-
-
+    * [Sample Visualizations](#Sample-3)
 
 <a name="Project-1"></a>
 <h2 align="center">Project 1: <a href="https://github.com/fahm1/Portfolio/tree/main/Troll%20Tweet%20Analysis">Troll Tweet Analysis</a></h2>
@@ -25,6 +26,7 @@ As we answer this question, we will be answering some secondary questions that w
 * What are some specific characteristics of the most successful account category?
 * What are some of the most repeated words by the top troll accounts?
 
+<a name="Sample-1></a>
 <h3 align="center">Sample Visualizations:</h3>
 <h3 align="center">
 <b>Sample 1:</b> Mixed Pairplot / KDE plot / Heatmap showing characteristics of Russian troll accounts and tweets.
@@ -34,7 +36,7 @@ As we answer this question, we will be answering some secondary questions that w
 <h3 align="center">
 <b>Sample 2:</b> Boxplots showing the distribution of followers by account category.
 </h3>
-<p align="center"><img src="Troll%20Tweet%20Analysis/follwers_by_category.png"/ width=100%></p>
+<p align="center"><img src="Troll%20Tweet%20Analysis/followers_by_category.png"/ width=100%></p>
 
 <a name="Project-2"></a>
 <h2 align="center">Project 2: <a href="https://github.com/fahm1/Portfolio/tree/main/Movie%20Analysis">Movie Media Analysis</a></h2>
@@ -46,6 +48,7 @@ In doing so, we will be trying to answer the following questions:
 * Does movie genre dictate film media?
 * What are the distributions of budgets of each film media?
 
+<a name="Sample-2></a>
 <h3 align="center">Sample Visualizations:</h3>
 <h3 align="center">
 <b>Sample 1:</b> Stacked bar chart of the distribution of movie genre over time from 2006-2017.
@@ -67,6 +70,8 @@ In doing so, we will be trying to answer the following questions:
 * Are some bacterial phyla highly correlated to another bacterial phyla?
 * Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?
 * Is there a correlation between bacteria found on keyboard keys and on finger tips?
+
+<a name="Sample-3></a>
 <h3 align="center">Sample Visualizations:</h3>
 <h3 align="center">
 <b>Sample 1:</b> Heatmap that shows the correlations between the relative abundances of various bacterial Phyla found on keyboard keys and fingertips.
