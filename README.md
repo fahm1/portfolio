@@ -16,6 +16,8 @@ This is a repository to highlight portfolio projects.
 In this project, we will analyze Russian troll tweet data from the dataset provided by <a href="https://github.com/fivethirtyeight/russian-troll-tweets/">fivethirtyeight</a>.  
 Some analysis of this data has already been <a href="http://pwarren.people.clemson.edu/Linvill_Warren_TrollFactory.pdf">completed and published</a> by Linvill and Warren of Clemson university.
 
+</br>
+
 In this analysis, we will be trying to answer one primary question:  
 **What characteristics of troll accounts and their tweets make them successful?**
 
@@ -24,7 +26,7 @@ In this case, we are equating success to the number of followers the troll accou
 As we answer this question, we will be answering some secondary questions that will help guide our answer, such as:
 * Which account category is most successful?
 * What are some specific characteristics of the most successful account category?
-* What are some of the most repeated words by the top troll accounts?
+* What type of language are the top troll accounts using?
 
 <a name="Sample-1"></a>
 <h3 align="center">Sample Visualizations:</h3>
