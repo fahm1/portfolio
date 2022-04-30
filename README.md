@@ -26,7 +26,7 @@ As we answer this question, we will be answering some secondary questions that w
 * What are some specific characteristics of the most successful account category?
 * What are some of the most repeated words by the top troll accounts?
 
-<a name="Sample-1></a>
+<a name="Sample-1"></a>
 <h3 align="center">Sample Visualizations:</h3>
 <h3 align="center">
 <b>Sample 1:</b> Mixed Pairplot / KDE plot / Heatmap showing characteristics of Russian troll accounts and tweets.
@@ -48,7 +48,7 @@ In doing so, we will be trying to answer the following questions:
 * Does movie genre dictate film media?
 * What are the distributions of budgets of each film media?
 
-<a name="Sample-2></a>
+<a name="Sample-2"></a>
 <h3 align="center">Sample Visualizations:</h3>
 <h3 align="center">
 <b>Sample 1:</b> Stacked bar chart of the distribution of movie genre over time from 2006-2017.
@@ -71,7 +71,7 @@ In doing so, we will be trying to answer the following questions:
 * Do bacterial communities found on keyboard keys and fingertips differ on an individual basis?
 * Is there a correlation between bacteria found on keyboard keys and on finger tips?
 
-<a name="Sample-3></a>
+<a name="Sample-3"></a>
 <h3 align="center">Sample Visualizations:</h3>
 <h3 align="center">
 <b>Sample 1:</b> Heatmap that shows the correlations between the relative abundances of various bacterial Phyla found on keyboard keys and fingertips.
