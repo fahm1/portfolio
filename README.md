@@ -14,7 +14,7 @@ This is a repository to highlight portfolio projects.
 <a name="Project-1"></a>
 <h2 align="center">Project 1: <a href="https://github.com/fahm1/Portfolio/tree/main/Troll%20Tweet%20Analysis">Troll Tweet Analysis</a></h2>
 In this project, we will analyze Russian troll tweet data from the dataset provided by <a href="https://github.com/fivethirtyeight/russian-troll-tweets/">fivethirtyeight</a>.  
-<a href="http://pwarren.people.clemson.edu/Linvill_Warren_TrollFactory.pdf">Some analysis</a> of this data has already been completed and published by Linvill and Warren of Clemson university.
+Some analysis of this data has already been <a href="http://pwarren.people.clemson.edu/Linvill_Warren_TrollFactory.pdf">completed and published</a> by Linvill and Warren of Clemson university.
 
 In this analysis, we will be trying to answer one primary question:  
 **What characteristics of troll accounts and their tweets make them successful?**
