@@ -62,7 +62,7 @@ In doing so, we will be trying to answer the following questions:
 
 <a name="Project-3"></a>
 <h2 align="center">Project 3: <a href="https://github.com/fahm1/Portfolio/tree/main/Microbe%20Analysis">Microbe Data Analysis</a></h2>
-Data is adapted from the publicly available data for the [2010 Fierer et al. paper](https://www.pnas.org/content/107/14/6477)
+Data is adapted from the publicly available data for the <a href="https://www.pnas.org/content/107/14/6477">2010 Fierer et al. paper</a>.
 
 In this project, we will analyze bacterial phyla that were found on keyboard keys as well as on finger tips. We will also take a look at this data on an individual basis. 
 
