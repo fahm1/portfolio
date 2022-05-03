@@ -15,11 +15,11 @@ As we answer this question, we will be answering some secondary questions that w
 
 ---
 
-<h2 align="center">Question 1?</h2>
+<h2 align="center">What characteristics of troll accounts and their tweets make them successful??</h2>
 <h3 align="center">
-<b>Plot 1:</b> plot title
+<b>Plot 1:</b> Relationships Between Different Aspects of Successful Russian Troll Accounts and Their Tweets
 </h3>
-<p align="center"><img src="Film_by_Year.png"/ width=100%></p>
+<p align="center"><img src="tweet_characteristics.png"/ width=100%></p>
 Description of plot
 
 ---
