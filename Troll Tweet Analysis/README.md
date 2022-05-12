@@ -15,7 +15,7 @@ As we answer this question, we will be answering some secondary questions that w
 
 ---
 
-<h2 align="center">What characteristics of troll accounts and their tweets make them successful??</h2>
+<h2 align="center">What characteristics of troll accounts and their tweets make them successful?</h2>
 <h3 align="center">
 <b>Plot 1:</b> Relationships between different aspects of successful Russian troll accounts and their tweets
 </h3>
