@@ -16,6 +16,8 @@ By answering this question and creating our model, we will be able to predict th
 
 Some visualizations shown will be created using Tableau.
 
+[Click here to access an interactive Tableau dashboard](https://public.tableau.com/views/absentee_analysis_workbook/Dashboard?:language=en-US&:display_count=n&:origin=viz_share_link)
+
 ---
 
 <h2 align="center">Which factors are most indicative of excessive absenteeism from work and can we predict absenteeism by identifying these factors?</h2>
@@ -30,3 +32,10 @@ With that, it's interesting to note that pregnancy and childbirth—which are ty
 
 ---
 
+<h3 align="center">
+<b>Plot 2:</b> Primary features, age, and BMI vs absenteeism probability. 
+</h3>
+<p align="center"><img src="dashboard.png"/ width=100%></p>
+With the Primary Reasons vs Probability chart, we can analyze the four primary reasons for absenteeism and the probability of absenteeism for each of them. We can see that individuals with 'Serious Symptoms' or 'Various Diseases' have a very high likelihood of absenteeism, while individuals with 'Light Reasons' are far more likley to not show absenteeism.
+
+With the Age & BMI vs Probability chart, we can actually see some interesting results, as we can see that the probability of absenteeism seems to remain just about constant for both increasing age and BMI. This may be a little surprising, as it might be expected that elderly individuals would have a higher likelihood of getting sick and therefore more absenteeism, but the data does not reflect this. The same could be said of BMI, where increasing BMI would be expected to result in greater absenteeism, but this is not observed. 
