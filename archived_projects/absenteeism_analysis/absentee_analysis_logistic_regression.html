@@ -1,0 +1,1813 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Logistic Regression Notebook &#8212; Fahmi&#39;s Portfolio</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Integration Notebook" href="absentee_integration.html" />
+    <link rel="prev" title="Preprocessing Notebook" href="absentee_analysis_preprocessing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Fahmi's Portfolio</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to My Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../bellabeat_case_study/bellabeat.html">
+   Bellabeat Case Study
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../bellabeat_case_study/bellabeat_analysis.html">
+     Bellabeat Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Archived Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../note.html">
+   Note About Archived Projects
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../troll_tweet_analysis/README.html">
+   Russian Troll Tweet Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../troll_tweet_analysis/tweet_analysis_notebook.html">
+     Tweet Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../movie_analysis/README.html">
+   Movie Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../movie_analysis/movie_analysis.html">
+     Movie Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../microbe_analysis/README.html">
+   Microbe Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../microbe_analysis/microbe_analysis_notebook.html">
+     Microbe Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Absenteeism Analysis
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="absentee_analysis_preprocessing.html">
+     Preprocessing Notebook
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Logistic Regression Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="absentee_integration.html">
+     Integration Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/fahm1/Portfolio/master?urlpath=tree/docs/archived_projects/absenteeism_analysis/absentee_analysis_logistic_regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/fahm1/Portfolio"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/fahm1/Portfolio/issues/new?title=Issue%20on%20page%20%2Farchived_projects/absenteeism_analysis/absentee_analysis_logistic_regression.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/archived_projects/absenteeism_analysis/absentee_analysis_logistic_regression.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#absenteeism-at-work-analysis">
+   Absenteeism at Work Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#checkpoint-1">
+   Checkpoint 1:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic Regression:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-factors-are-most-indicative-of-excessive-absenteeism-from-work-and-can-we-predict-absenteeism-by-identifying-these-factors">
+   Which factors are most indicative of excessive absenteeism from work and can we predict absenteeism by identifying these factors?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-the-model">
+   Testing the Model:
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Logistic Regression Notebook</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#absenteeism-at-work-analysis">
+   Absenteeism at Work Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#checkpoint-1">
+   Checkpoint 1:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistic-regression">
+   Logistic Regression:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-factors-are-most-indicative-of-excessive-absenteeism-from-work-and-can-we-predict-absenteeism-by-identifying-these-factors">
+   Which factors are most indicative of excessive absenteeism from work and can we predict absenteeism by identifying these factors?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-the-model">
+   Testing the Model:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-notebook">
+<h1>Logistic Regression Notebook<a class="headerlink" href="#logistic-regression-notebook" title="Permalink to this headline">#</a></h1>
+<section id="absenteeism-at-work-analysis">
+<h2>Absenteeism at Work Analysis<a class="headerlink" href="#absenteeism-at-work-analysis" title="Permalink to this headline">#</a></h2>
+<p>Notebook 2/3</p>
+<p>Now that we have finished preprocessing our data, we can move on to our analysis.</p>
+<p>We will be creating a logistic regression model which will predict the absenteeism of an individual based on the various features we have available in our dataset.</p>
+<p>Starting off with importing the required libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Read in the data that we preprocessed earlier</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;absenteeism_Preprocessed.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 700 entries, 0 to 699
+Data columns (total 15 columns):
+ #   Column                     Non-Null Count  Dtype  
+---  ------                     --------------  -----  
+ 0   Reason_1                   700 non-null    int64  
+ 1   Reason_2                   700 non-null    int64  
+ 2   Reason_3                   700 non-null    int64  
+ 3   Reason_4                   700 non-null    int64  
+ 4   Month Value                700 non-null    int64  
+ 5   Day of the Week            700 non-null    int64  
+ 6   Transportation Expense     700 non-null    int64  
+ 7   Distance to Work           700 non-null    int64  
+ 8   Age                        700 non-null    int64  
+ 9   Daily Work Load Average    700 non-null    float64
+ 10  Body Mass Index            700 non-null    int64  
+ 11  Education                  700 non-null    int64  
+ 12  Children                   700 non-null    int64  
+ 13  Pets                       700 non-null    int64  
+ 14  Absenteeism Time in Hours  700 non-null    int64  
+dtypes: float64(1), int64(14)
+memory usage: 82.2 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Reason_1</th>
+      <th>Reason_2</th>
+      <th>Reason_3</th>
+      <th>Reason_4</th>
+      <th>Month Value</th>
+      <th>Day of the Week</th>
+      <th>Transportation Expense</th>
+      <th>Distance to Work</th>
+      <th>Age</th>
+      <th>Daily Work Load Average</th>
+      <th>Body Mass Index</th>
+      <th>Education</th>
+      <th>Children</th>
+      <th>Pets</th>
+      <th>Absenteeism Time in Hours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>1</td>
+      <td>289</td>
+      <td>36</td>
+      <td>33</td>
+      <td>239.554</td>
+      <td>30</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>1</td>
+      <td>118</td>
+      <td>13</td>
+      <td>50</td>
+      <td>239.554</td>
+      <td>31</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>2</td>
+      <td>179</td>
+      <td>51</td>
+      <td>38</td>
+      <td>239.554</td>
+      <td>31</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can now start to analyze the data.</p>
+<p>We may predict that some of the columns may be more greatly correlated with ‘Absenteeism Time in Hours’ than other columns.<br />
+The ‘Reasons_1-4’ may be the most predictive of absenteeism time, while ‘Pets’ may not be so greatly correlated.</p>
+<p>As a refresher, these are the four categories in Reasons_1-4:</p>
+<ul class="simple">
+<li><p>1-14: related to various diseases</p></li>
+<li><p>15-17: related to pregnancy or giving birth</p></li>
+<li><p>18-21: related to poisonings or symptoms not otherwise classified</p></li>
+<li><p>22-28: ‘light reasons’ such as a doctor’s appointment</p></li>
+</ul>
+<p>We can observe these relationships using logistic regression.</p>
+<p>First off, we can find the median absenteeism time to get a sense of what might be considered to be abnormally high or low absenteeism times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Absenteeism Time in Hours&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that the median time absent is about 3 hours.<br />
+With this, we can suggest that an individual spending &lt;=3 hours away is moderately absent, and and individual spending &gt;3 hours away is excessively absent.</p>
+<p>Furthering this idea, we can modify the ‘Absenteeism Time in Hours’ column to be a binary variable, with 0 = moderately absent and 1 = excessively absent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Excessive Absenteeism&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Absenteeism Time in Hours&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Absenteeism Time in Hours&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Excessive Absenteeism&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    381
+1    319
+Name: Excessive Absenteeism, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Excessive Absenteeism&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.45571428571428574
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that about 46% of the values are 1s, implying just under half of the individuals are excessively absent.<br />
+This makes sense as we used the median to designate the point of extreme absenteeism.</p>
+</section>
+<section id="checkpoint-1">
+<h2>Checkpoint 1:<a class="headerlink" href="#checkpoint-1" title="Permalink to this headline">#</a></h2>
+<p>We no longer need the ‘Absenteeism Time in Hours’ column, so we can drop it while also creating a checkpoint.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_targets</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Absenteeism Time in Hours&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_targets</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Reason_1</th>
+      <th>Reason_2</th>
+      <th>Reason_3</th>
+      <th>Reason_4</th>
+      <th>Month Value</th>
+      <th>Day of the Week</th>
+      <th>Transportation Expense</th>
+      <th>Distance to Work</th>
+      <th>Age</th>
+      <th>Daily Work Load Average</th>
+      <th>Body Mass Index</th>
+      <th>Education</th>
+      <th>Children</th>
+      <th>Pets</th>
+      <th>Excessive Absenteeism</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>1</td>
+      <td>289</td>
+      <td>36</td>
+      <td>33</td>
+      <td>239.554</td>
+      <td>30</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>1</td>
+      <td>118</td>
+      <td>13</td>
+      <td>50</td>
+      <td>239.554</td>
+      <td>31</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>2</td>
+      <td>179</td>
+      <td>51</td>
+      <td>38</td>
+      <td>239.554</td>
+      <td>31</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can isolate the dataframe without the ‘Excessive Absenteeism’ column so that we can predict it with our logistic regression model once it is created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unscaled_inputs</span> <span class="o">=</span> <span class="n">df_targets</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Custom class to use StandardScaler but without scaling of our dummy variables of Reasons 1-4.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomScaler</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Custom scaler class to scale the data.&#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">columns</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">columns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span>
+    
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">init_col_order</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span>
+        <span class="n">X_scaled</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">]),</span> <span class="n">columns</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+        <span class="n">X_not_scaled</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="o">~</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_not_scaled</span><span class="p">,</span> <span class="n">X_scaled</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="n">init_col_order</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unscaled_inputs</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Reason_1&#39;, &#39;Reason_2&#39;, &#39;Reason_3&#39;, &#39;Reason_4&#39;, &#39;Month Value&#39;,
+       &#39;Day of the Week&#39;, &#39;Transportation Expense&#39;, &#39;Distance to Work&#39;,
+       &#39;Age&#39;, &#39;Daily Work Load Average&#39;, &#39;Body Mass Index&#39;, &#39;Education&#39;,
+       &#39;Children&#39;, &#39;Pets&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_to_scale</span> <span class="o">=</span> <span class="n">unscaled_inputs</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">4</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absenteeism_scaler</span> <span class="o">=</span> <span class="n">CustomScaler</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns_to_scale</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare the scaling mechanism</span>
+<span class="n">absenteeism_scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">unscaled_inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CustomScaler(columns=[&#39;Month Value&#39;, &#39;Day of the Week&#39;,
+                      &#39;Transportation Expense&#39;, &#39;Distance to Work&#39;, &#39;Age&#39;,
+                      &#39;Daily Work Load Average&#39;, &#39;Body Mass Index&#39;, &#39;Education&#39;,
+                      &#39;Children&#39;, &#39;Pets&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform the scaling</span>
+<span class="n">scaled_inputs</span> <span class="o">=</span> <span class="n">absenteeism_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">unscaled_inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_inputs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Reason_1</th>
+      <th>Reason_2</th>
+      <th>Reason_3</th>
+      <th>Reason_4</th>
+      <th>Month Value</th>
+      <th>Day of the Week</th>
+      <th>Transportation Expense</th>
+      <th>Distance to Work</th>
+      <th>Age</th>
+      <th>Daily Work Load Average</th>
+      <th>Body Mass Index</th>
+      <th>Education</th>
+      <th>Children</th>
+      <th>Pets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.182726</td>
+      <td>-0.683704</td>
+      <td>1.005844</td>
+      <td>0.412816</td>
+      <td>-0.536062</td>
+      <td>-0.806331</td>
+      <td>0.767431</td>
+      <td>-0.44798</td>
+      <td>0.880469</td>
+      <td>0.268487</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.182726</td>
+      <td>-0.683704</td>
+      <td>-1.574681</td>
+      <td>-1.141882</td>
+      <td>2.130803</td>
+      <td>-0.806331</td>
+      <td>1.002633</td>
+      <td>-0.44798</td>
+      <td>-0.019280</td>
+      <td>-0.589690</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.182726</td>
+      <td>-0.007725</td>
+      <td>-0.654143</td>
+      <td>1.426749</td>
+      <td>0.248310</td>
+      <td>-0.806331</td>
+      <td>1.002633</td>
+      <td>-0.44798</td>
+      <td>-0.919030</td>
+      <td>-0.589690</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can see that the all of the data outside of the dummy variables is now standardized.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaled_inputs</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(700, 14)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now split the data into a training dataset and a testing dataset so that we can test the model on data it has not seen before.</p>
+<p>We will first shuffle the data so that the datasets are random and to make sure that aren’t in order by date, age, etc.</p>
+<p>This will return 4 arrays:</p>
+<ul class="simple">
+<li><p>a training dataset with inputs</p></li>
+<li><p>a training dataset with targets</p></li>
+<li><p>a test dataset with inputs</p></li>
+<li><p>a test dataset with targets</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">scaled_inputs</span><span class="p">,</span> <span class="n">df_targets</span><span class="p">[</span><span class="s1">&#39;Excessive Absenteeism&#39;</span><span class="p">],</span> 
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(560, 14) (560,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(140, 14) (140,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that the training dataset is 560 rows long, while the test dataset is 140 rows long (80% for training, 20% for testing).<br />
+We can also see that the inputs contain 560 observations along 14 features, while the targets are a vector of length 560.</p>
+</section>
+<section id="logistic-regression">
+<h2>Logistic Regression:<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7785714285714286
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this, we can see that the model learned to classify the observations correctly about 78% of the time.</p>
+<p>We can also manually check the accuracy of the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_outputs</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">model_outputs</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True     436
+False    124
+Name: Excessive Absenteeism, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that there was a correct prediction 436/124 times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">model_outputs</span> <span class="o">==</span> <span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True     0.778571
+False    0.221429
+Name: Excessive Absenteeism, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this we confirm the accuracy of the model.</p>
+</section>
+<section id="which-factors-are-most-indicative-of-excessive-absenteeism-from-work-and-can-we-predict-absenteeism-by-identifying-these-factors">
+<h2>Which factors are most indicative of excessive absenteeism from work and can we predict absenteeism by identifying these factors?<a class="headerlink" href="#which-factors-are-most-indicative-of-excessive-absenteeism-from-work-and-can-we-predict-absenteeism-by-identifying-these-factors" title="Permalink to this headline">#</a></h2>
+<p>We can find the intercept and coefficients of the model so that we can analyze the individual features and their effects on the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.68969191])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.80088908e+00,  9.37679263e-01,  3.09784623e+00,
+         8.55189097e-01,  1.65600560e-01, -8.38855532e-02,
+         6.13417431e-01, -9.52263740e-03, -1.66485910e-01,
+        -9.39188260e-04,  2.69858214e-01, -8.32092336e-02,
+         3.60649946e-01, -2.86053551e-01]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can match up these coefficients to the variables they are associated with</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_name</span> <span class="o">=</span> <span class="n">unscaled_inputs</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Feature Name&#39;</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">feature_name</span><span class="p">)</span>
+<span class="n">summary_table</span><span class="p">[</span><span class="s1">&#39;Coefficient&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Feature Name</th>
+      <th>Coefficient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Reason_1</td>
+      <td>2.800889</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Reason_2</td>
+      <td>0.937679</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Reason_3</td>
+      <td>3.097846</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Reason_4</td>
+      <td>0.855189</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Month Value</td>
+      <td>0.165601</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Day of the Week</td>
+      <td>-0.083886</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Transportation Expense</td>
+      <td>0.613417</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Distance to Work</td>
+      <td>-0.009523</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Age</td>
+      <td>-0.166486</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Daily Work Load Average</td>
+      <td>-0.000939</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Body Mass Index</td>
+      <td>0.269858</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Education</td>
+      <td>-0.083209</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Children</td>
+      <td>0.360650</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Pets</td>
+      <td>-0.286054</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We have a nice summary of how the model is ranking the features, but we can add the coefficient and also rank them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">summary_table</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">summary_table</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Intercept&#39;</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Feature Name</th>
+      <th>Coefficient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Intercept</td>
+      <td>-1.689692</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Reason_1</td>
+      <td>2.800889</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Reason_2</td>
+      <td>0.937679</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Reason_3</td>
+      <td>3.097846</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Reason_4</td>
+      <td>0.855189</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Month Value</td>
+      <td>0.165601</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Day of the Week</td>
+      <td>-0.083886</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Transportation Expense</td>
+      <td>0.613417</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Distance to Work</td>
+      <td>-0.009523</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Age</td>
+      <td>-0.166486</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Daily Work Load Average</td>
+      <td>-0.000939</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Body Mass Index</td>
+      <td>0.269858</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Education</td>
+      <td>-0.083209</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Children</td>
+      <td>0.360650</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Pets</td>
+      <td>-0.286054</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can now interpret the coefficients.</p>
+<p>Because the distance from 0 suggests the importance of a coefficient and because we have negative values, we can take the exponential of the coefficients in order to interpret all of the coefficients more easily.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span><span class="p">[</span><span class="s1">&#39;Odds Ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">summary_table</span><span class="o">.</span><span class="n">Coefficient</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span> <span class="o">=</span> <span class="n">summary_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Odds Ratio&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Feature Name</th>
+      <th>Coefficient</th>
+      <th>Odds Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Reason_3</td>
+      <td>3.097846</td>
+      <td>22.150193</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Reason_1</td>
+      <td>2.800889</td>
+      <td>16.459274</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Reason_2</td>
+      <td>0.937679</td>
+      <td>2.554047</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Reason_4</td>
+      <td>0.855189</td>
+      <td>2.351819</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Transportation Expense</td>
+      <td>0.613417</td>
+      <td>1.846732</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Children</td>
+      <td>0.360650</td>
+      <td>1.434261</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Body Mass Index</td>
+      <td>0.269858</td>
+      <td>1.309779</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Month Value</td>
+      <td>0.165601</td>
+      <td>1.180102</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Daily Work Load Average</td>
+      <td>-0.000939</td>
+      <td>0.999061</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Distance to Work</td>
+      <td>-0.009523</td>
+      <td>0.990523</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Education</td>
+      <td>-0.083209</td>
+      <td>0.920159</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Day of the Week</td>
+      <td>-0.083886</td>
+      <td>0.919536</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Age</td>
+      <td>-0.166486</td>
+      <td>0.846635</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Pets</td>
+      <td>-0.286054</td>
+      <td>0.751222</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Intercept</td>
+      <td>-1.689692</td>
+      <td>0.184576</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Plot 1:</strong> Barplot showing the odds ratios of the various analyzed features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Odds Ratio&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Feature Name&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">summary_table</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Odds Ratio&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues_d&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">spine</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Odds Ratio&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Feature Name&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Serious Symptoms&#39;</span><span class="p">,</span> <span class="s1">&#39;Various Diseases&#39;</span><span class="p">,</span> <span class="s1">&#39;Pregnancy Related&#39;</span><span class="p">,</span> <span class="s1">&#39;Light Reasons&#39;</span><span class="p">]</span> 
+                   <span class="o">+</span> <span class="n">summary_table</span><span class="p">[</span><span class="s1">&#39;Feature Name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Odds Ratio of Various Features on Predicting Absenteeism&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># plt.savefig(&#39;feature_odds_ratios.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=200)</span>
+<span class="c1"># plt.savefig(&#39;feature_odds_ratios.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=800)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/absentee_analysis_logistic_regression_67_0.png" src="../../_images/absentee_analysis_logistic_regression_67_0.png" />
+</div>
+</div>
+<p>Reason Categories:</p>
+<ul class="simple">
+<li><p>1 = various diseases</p></li>
+<li><p>2 = pregnancy and childbirth</p></li>
+<li><p>3 = poisoning and peculiar symptoms</p></li>
+<li><p>4 = light diseases and appointments</p></li>
+</ul>
+<p>We can see that ‘Reason_3’, or serious symptoms, has an ‘Odds Ratio’ of more than 22, suggesting that the model found that serious symptoms are the most important factor in determining absenteeism time, and as a result, it places the greatest weight with ‘Reason_3’.<br />
+In fact, a person with serious symptoms is 22 times more likely to be absent than baseline.
+It is also worth noting that ‘Reason_1’, or various diseases, is just behind serious symptoms and that there is a steep drop off in terms of importance after reasons 3 and 1.<br />
+With that, it’s interesting to note that pregnancy and childbirth are a significant factor in absenteeism time, but not nearly as important as reasons 3 and 1.</p>
+<p>Also, the features closest to 1 have little importance in contributing to absenteeism time, namely ‘Daily Work Load Average’ and ‘Distance to Work’.<br />
+Because these features have little to no contribution to the model, we can simply remove them and rerun our analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_targets</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Absenteeism Time in Hours&#39;</span><span class="p">,</span> <span class="s1">&#39;Daily Work Load Average&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance to Work&#39;</span><span class="p">])</span>
+<span class="n">unscaled_inputs</span> <span class="o">=</span> <span class="n">df_targets</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">columns_to_scale</span> <span class="o">=</span> <span class="n">unscaled_inputs</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">4</span><span class="p">:]</span>
+<span class="n">absenteeism_scaler</span> <span class="o">=</span> <span class="n">CustomScaler</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns_to_scale</span><span class="p">)</span>
+<span class="n">absenteeism_scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">unscaled_inputs</span><span class="p">)</span>
+<span class="n">scaled_inputs</span> <span class="o">=</span> <span class="n">absenteeism_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">unscaled_inputs</span><span class="p">)</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">scaled_inputs</span><span class="p">,</span> <span class="n">df_targets</span><span class="p">[</span><span class="s1">&#39;Excessive Absenteeism&#39;</span><span class="p">],</span> 
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.775
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that even with the features removed, the model still has an accuracy of just about 78%.</p>
+</section>
+<section id="testing-the-model">
+<h2>Testing the Model:<a class="headerlink" href="#testing-the-model" title="Permalink to this headline">#</a></h2>
+<p>We can now test our model on a dataset which the model has not seen before in order to see how well it can predict absenteeism.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7428571428571429
+</pre></div>
+</div>
+</div>
+</div>
+<p>On a dataset which the model has never seen before, the accuracy is a bit lower at 74%. This is expected because the model has not seen the data before, though this would also suggest some slight overfitting.<br />
+(Interesting to note: using a random_state of 42 will actually lead to a higher score on the test dataset than on the training dataset)</p>
+<p>We can also take a look at the probability of a test case being 0 or 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_proba</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">x_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_proba</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(140,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predicted_proba</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.26367909, 0.39149324, 0.5884953 , 0.19671372, 0.92765949,
+       0.68345039, 0.68723089, 0.86641153, 0.20240577, 0.24935512,
+       0.51911681, 0.80193717, 0.92240122, 0.28949547, 0.69333066,
+       0.42477134, 0.45983343, 0.4290204 , 0.6181567 , 0.95157016,
+       0.30177841, 0.20594963, 0.6042142 , 0.57643674, 0.73389594,
+       0.24345908, 0.48592848, 0.13125846, 0.80038474, 0.21550284,
+       0.37375033, 0.68684805, 0.69151994, 0.54277312, 0.20594963,
+       0.50746974, 0.21018312, 0.74373493, 0.4356573 , 0.59258079,
+       0.22711399, 0.43398533, 0.2164863 , 0.39622346, 0.81535451,
+       0.57004267, 0.69138205, 0.2749828 , 0.2022134 , 0.18213206,
+       0.59189934, 0.34261348, 0.67089321, 0.28594573, 0.85012682,
+       0.47097096, 0.89014512, 0.25485723, 0.31801378, 0.31586127,
+       0.71934353, 0.6603208 , 0.31049764, 0.78742011, 0.19826672,
+       0.26755806, 0.08241193, 0.22989059, 0.72823181, 0.33008041,
+       0.21018312, 0.29414363, 0.90843346, 0.43755924, 0.61945647,
+       0.21550284, 0.78644636, 0.70406529, 0.76569258, 0.68066078,
+       0.24529509, 0.07972875, 0.22353013, 0.7297025 , 0.41377939,
+       0.12292709, 0.69947424, 0.5623528 , 0.23336509, 0.67436142,
+       0.16224143, 0.1230909 , 0.22364233, 0.29066539, 0.22847408,
+       0.8667905 , 0.27300496, 0.78608897, 0.22618022, 0.23428284,
+       0.62827007, 0.69906953, 0.70872144, 0.69720993, 0.46848236,
+       0.51842145, 0.25456024, 0.84560458, 0.77684925, 0.15138856,
+       0.07303038, 0.90327322, 0.64372895, 0.3540634 , 0.55284277,
+       0.6021463 , 0.80344085, 0.803885  , 0.52416246, 0.2996875 ,
+       0.23695551, 0.17150088, 0.82899443, 0.4766994 , 0.21550284,
+       0.38454438, 0.1982896 , 0.11932581, 0.74880633, 0.31401886,
+       0.65744612, 0.20758039, 0.32089889, 0.34464935, 0.29258587,
+       0.5099547 , 0.44314631, 0.30308352, 0.25775543, 0.43755924])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The logitic regression model calculates these values in the background, a probability &lt; 0.5 is considered 0, and a probability &gt; 0.5 is considered 1.</p>
+<p>Now that we have a model, we can save it so that we can use it on new data later on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">absenteeism_scaler</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And with that, we now have a model that can predict absenteeism time for new individuals. We can now take this model to predict absenteeism time for new individuals and then analyze the new data.</p>
+<p>At this point, we will create a module that will perform many of the preprocessing tasks that we have done in notebook 1 and also some aspects of this notebook so that we can apply it to new data.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./archived_projects\absenteeism_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="absentee_analysis_preprocessing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Preprocessing Notebook</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="absentee_integration.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Integration Notebook</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Fahmi I.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

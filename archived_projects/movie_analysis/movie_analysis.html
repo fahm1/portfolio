@@ -1,0 +1,1111 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Movie Analysis Notebook &#8212; Fahmi&#39;s Portfolio</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Microbe Data Analysis" href="../microbe_analysis/README.html" />
+    <link rel="prev" title="Movie Data Analysis" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Fahmi's Portfolio</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to My Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../bellabeat_case_study/bellabeat.html">
+   Bellabeat Case Study
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../bellabeat_case_study/bellabeat_analysis.html">
+     Bellabeat Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Archived Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../note.html">
+   Note About Archived Projects
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../troll_tweet_analysis/README.html">
+   Russian Troll Tweet Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../troll_tweet_analysis/tweet_analysis_notebook.html">
+     Tweet Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Movie Analysis
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Movie Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../microbe_analysis/README.html">
+   Microbe Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../microbe_analysis/microbe_analysis_notebook.html">
+     Microbe Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../absenteeism_analysis/README.html">
+   Absenteeism Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../absenteeism_analysis/absentee_analysis_preprocessing.html">
+     Preprocessing Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../absenteeism_analysis/absentee_analysis_logistic_regression.html">
+     Logistic Regression Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../absenteeism_analysis/absentee_integration.html">
+     Integration Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/fahm1/Portfolio/master?urlpath=tree/docs/archived_projects/movie_analysis/movie_analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/fahm1/Portfolio"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/fahm1/Portfolio/issues/new?title=Issue%20on%20page%20%2Farchived_projects/movie_analysis/movie_analysis.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/archived_projects/movie_analysis/movie_analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Movie Analysis Notebook
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-has-the-distribution-of-film-media-changed-over-time">
+   How has the distribution of film media changed over time?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-has-the-distribution-of-genres-changed-over-time">
+   How has the distribution of genres changed over time?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#does-movie-genre-dictate-film-media">
+   Does movie genre dictate film media?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-the-distributions-of-budgets-of-each-film-media">
+   What are the distributions of budgets of each film media?
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Movie Analysis Notebook</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Movie Analysis Notebook
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-has-the-distribution-of-film-media-changed-over-time">
+   How has the distribution of film media changed over time?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-has-the-distribution-of-genres-changed-over-time">
+   How has the distribution of genres changed over time?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#does-movie-genre-dictate-film-media">
+   Does movie genre dictate film media?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-the-distributions-of-budgets-of-each-film-media">
+   What are the distributions of budgets of each film media?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="movie-analysis-notebook">
+<h1>Movie Analysis Notebook<a class="headerlink" href="#movie-analysis-notebook" title="Permalink to this headline">#</a></h1>
+<p>In this project, we will analyze movie data, specifically the film media (e.g. film vs. digital), the genre, and the budget.</p>
+<p>In doing so, we will be trying to answer the following questions:</p>
+<ul class="simple">
+<li><p>How has the distribution of film media changed over time?</p></li>
+<li><p>How has the distribution of genres changed over time?</p></li>
+<li><p>Does movie genre dictate film media?</p></li>
+<li><p>What are the distributions of budgets of each film media?</p></li>
+</ul>
+<p>We start off with imports and getting an overview of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;movies_film_digital.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1195 entries, 0 to 1194
+Data columns (total 12 columns):
+ #   Column                     Non-Null Count  Dtype  
+---  ------                     --------------  -----  
+ 0   id                         1195 non-null   int64  
+ 1   production_year            1195 non-null   int64  
+ 2   title                      1195 non-null   object 
+ 3   directors                  1195 non-null   object 
+ 4   primary_genre              1195 non-null   object 
+ 5   genres                     1195 non-null   object 
+ 6   camera_format              1025 non-null   object 
+ 7   negative_format            1104 non-null   object 
+ 8   budget                     1195 non-null   int64  
+ 9   inflation_adjusted_budget  1195 non-null   float64
+ 10  budget_source              1195 non-null   object 
+ 11  film_type                  1141 non-null   object 
+dtypes: float64(1), int64(3), object(8)
+memory usage: 112.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>production_year</th>
+      <th>title</th>
+      <th>directors</th>
+      <th>primary_genre</th>
+      <th>genres</th>
+      <th>camera_format</th>
+      <th>negative_format</th>
+      <th>budget</th>
+      <th>inflation_adjusted_budget</th>
+      <th>budget_source</th>
+      <th>film_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4103791</td>
+      <td>2006</td>
+      <td>Pirates of the Caribbean: Dead Man's Chest</td>
+      <td>Verbinski, Gore</td>
+      <td>Action/Adventure</td>
+      <td>Action|Adventure|Fantasy</td>
+      <td>Arriflex 235, Panavision Primo Lenses|Panavisi...</td>
+      <td>35 mm</td>
+      <td>225000000</td>
+      <td>299587500.0</td>
+      <td>the-numbers</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4022547</td>
+      <td>2006</td>
+      <td>Night at the Museum</td>
+      <td>Levy, Shawn</td>
+      <td>Action/Adventure</td>
+      <td>Adventure|Comedy|Family|Fantasy</td>
+      <td>Arriflex 435, Zeiss Ultra Prime and Angenieux ...</td>
+      <td>35 mm</td>
+      <td>110000000</td>
+      <td>146465000.0</td>
+      <td>the-numbers</td>
+      <td>F</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3415583</td>
+      <td>2006</td>
+      <td>Cars</td>
+      <td>Lasseter, John|Ranft, Joe</td>
+      <td>Animation</td>
+      <td>Animation|Comedy|Family|Sport</td>
+      <td>NaN</td>
+      <td>Digital</td>
+      <td>70000000</td>
+      <td>93205000.0</td>
+      <td>the-numbers</td>
+      <td>D</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Action/Adventure    550
+Comedy              263
+Drama               141
+Horror               70
+Biography            66
+Crime                56
+Animation            18
+Documentary          12
+Mystery              10
+Sci-Fi                3
+Fantasy               2
+History               1
+Romance               1
+Short                 1
+Family                1
+Name: primary_genre, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We only want to focus on a few of the top genres so that our visualizations are easy to interpret. To do this, we set all genres outside of the top 3 to ‘Other’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> \
+                    <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">index</span> <span class="k">else</span> <span class="s1">&#39;Other&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Action/Adventure    550
+Comedy              263
+Other               241
+Drama               141
+Name: primary_genre, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rename film media to be more readable</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># default=&#39;warn&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">film_type</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Film&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">film_type</span> <span class="o">==</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Digital&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">film_type</span> <span class="o">==</span> <span class="s1">&#39;FD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Film and Digital&#39;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Digital             521
+Film                509
+Film and Digital    111
+Name: film_type, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The budget data may be more easily comparable if we scale down the data so that we have the values in terms of millions of dollars.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    299587500.0
+1    146465000.0
+2     93205000.0
+Name: inflation_adjusted_budget, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scale down budget values by 10^6</span>
+<span class="n">df</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span> <span class="o">/=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span>
+<span class="n">df</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    299.5875
+1    146.4650
+2     93.2050
+Name: inflation_adjusted_budget, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>That’s much better!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to create stacked bar plots to create varying visualizations</span>
+<span class="k">def</span> <span class="nf">mult_stacked_bar</span><span class="p">(</span><span class="n">table</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">,</span> <span class="n">colors</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">bar_width</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                     <span class="n">legend_title</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="nb">list</span><span class="o">=</span><span class="p">[],</span> 
+                     <span class="n">x_label</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="p">:</span> <span class="nb">list</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="n">savefile</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;plot.png&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates a stacked bar plot with multiple bars</span>
+<span class="sd">    </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            table (pd.crosstab): Crosstab of data</span>
+<span class="sd">            colors (list):       List of colors to use for each bar</span>
+<span class="sd">            legend_title (str):  Title for the legend</span>
+<span class="sd">            counts (list):       List of counts to use for each bar</span>
+<span class="sd">            x_label (str):       Label for the x-axis</span>
+<span class="sd">            figsize (list):      Size of the figure</span>
+<span class="sd">            savefile (bool):     Whether or not to save the plot</span>
+<span class="sd">            filename (str):      Filename to save the plot as</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="c1"># set up and augment bar graph</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">bar_width</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                    <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> 
+                    <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+
+    <span class="c1"># augment spines, ticks, and axes</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x_label</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">n_rows</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_cols</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># put relative proportions in the patches</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">):</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">ypos</span> <span class="o">=</span> <span class="n">current</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">prev</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ypos</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">current</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span>
+                    <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;14&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+            <span class="n">prev</span> <span class="o">+=</span> <span class="n">current</span>
+
+    <span class="c1"># put counts above patches</span>
+    <span class="k">if</span> <span class="n">counts</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mf">1.025</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                        <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+                        <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+    <span class="c1"># set up and augment legend</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">legend_title</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+            <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># save the figure</span>
+    <span class="k">if</span> <span class="n">savefile</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+        <span class="c1"># plt.savefig(filename, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=1000)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-has-the-distribution-of-film-media-changed-over-time">
+<h1>How has the distribution of film media changed over time?<a class="headerlink" href="#how-has-the-distribution-of-film-media-changed-over-time" title="Permalink to this headline">#</a></h1>
+<p>Start off by creating a crosstable of the data comparing the production year and film media.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">production_year</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">table1_nn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">production_year</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="p">)</span>
+
+<span class="c1"># create counts for each bar</span>
+<span class="n">counts1</span> <span class="o">=</span> <span class="p">[</span><span class="n">table1_nn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">table1_nn</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot 1:</strong> Stacked bar chart of the distribution of film media over time from 2006-2017.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize the distribution of movie media by year using the function</span>
+<span class="n">mult_stacked_bar</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span> <span class="s1">&#39;slategrey&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumpurple&#39;</span><span class="p">],</span>
+                 <span class="n">counts</span><span class="o">=</span><span class="n">counts1</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s1">&#39;Movie Media&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>
+                 <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Film_by_Year.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/movie_analysis_18_0.png" src="../../_images/movie_analysis_18_0.png" />
+</div>
+</div>
+<p>We can see that back in 2006, the predominant movie medium was film and that film remained the primary medium up until 2012. After that, digital media took over by storm, and is used for the vast majority of movies in recent years.</p>
+</section>
+<section id="how-has-the-distribution-of-genres-changed-over-time">
+<h1>How has the distribution of genres changed over time?<a class="headerlink" href="#how-has-the-distribution-of-genres-changed-over-time" title="Permalink to this headline">#</a></h1>
+<p>We will again create a crosstable of the data, but this time comparing the production year and genre of movies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">production_year</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">table2_nn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">production_year</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="p">)</span>
+
+<span class="c1"># create counts for each bar</span>
+<span class="n">counts2</span> <span class="o">=</span> <span class="p">[</span><span class="n">table2_nn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">table2_nn</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot 2:</strong> Stacked bar chart of the distribution of movie genre over time from 2006-2017.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize the distribution of movie genres by year using the function</span>
+<span class="n">mult_stacked_bar</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span> <span class="s1">&#39;slategrey&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumpurple&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumseagreen&#39;</span><span class="p">],</span> 
+                 <span class="n">counts</span><span class="o">=</span><span class="n">counts2</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s1">&#39;Movie Genre&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span>
+                 <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Genre_by_Year.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/movie_analysis_23_0.png" src="../../_images/movie_analysis_23_0.png" />
+</div>
+</div>
+<p>We can see that there while action/adventure movies have always been the most common, they have picked up even more popularity in recent years. There is also an observable decline in the number of comedy movies with time, while dramas and other genres have remained generally stable.</p>
+</section>
+<section id="does-movie-genre-dictate-film-media">
+<h1>Does movie genre dictate film media?<a class="headerlink" href="#does-movie-genre-dictate-film-media" title="Permalink to this headline">#</a></h1>
+<p>We will once more begin with creating a cross table of the data, but this time comparing movie genre to movie media.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">table3_nn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">primary_genre</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">film_type</span><span class="p">)</span>
+
+<span class="c1"># create counts for each bar</span>
+<span class="n">counts3</span> <span class="o">=</span> <span class="p">[</span><span class="n">table3_nn</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">table3_nn</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot 3:</strong> Stacked bar chart of the relative frequency of film media by movie genre.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize the distribution of movie media by genre using the function</span>
+<span class="n">mult_stacked_bar</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table3</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span> <span class="s1">&#39;slategrey&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumpurple&#39;</span><span class="p">],</span> 
+                 <span class="n">bar_width</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="n">counts3</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s1">&#39;Movie Media&#39;</span><span class="p">,</span> 
+                 <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Film_by_Genre.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/movie_analysis_29_0.png" src="../../_images/movie_analysis_29_0.png" />
+</div>
+</div>
+<p>We can see that it is action/adventure movies that use the digital medium most often, while comedies and ramas tend to make use of film more often. Understanding this data along with our previous visualizations, we can see that the decline in the usage of the film medium in recent years could also be due to the decline in comedy movies, which are primarily created using film. Meanwhile, the recent popularity of action/adventure movies⁠—which are primarily created using digital media⁠—could explain the recent rise in the usage of the digital medium.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to create boxplots to analyze distributions of movie budgets</span>
+<span class="k">def</span> <span class="nf">make_subplot_viz</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">figsize</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>
+                     <span class="n">xlabel</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">savefile</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s1">&#39;budget.png&#39;</span><span class="p">,</span> 
+                     <span class="n">colors</span><span class="p">:</span> <span class="nb">list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span><span class="s1">&#39;slategrey&#39;</span><span class="p">,</span><span class="s1">&#39;mediumpurple&#39;</span><span class="p">]):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates boxplots of the distribution of values</span>
+<span class="sd">    </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            values (list):        List of pd.Series or nd.array objects to plot</span>
+<span class="sd">            labels (list):        List of labels to use for each bar</span>
+<span class="sd">            fontsize (int):       Font size for the labels</span>
+<span class="sd">            title_fontsize (int): Font size for the title</span>
+<span class="sd">            figsize (tuple):      Figure size</span>
+<span class="sd">            xlabel (str):         Label for the x-axis</span>
+<span class="sd">            colors (list):        List of colors to use for each bar</span>
+<span class="sd">            savefile (bool):      Whether or not to save the figure</span>
+<span class="sd">            filename (str):       Name of the file to save</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># create figure and axes and set style</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)):</span>
+        
+        <span class="c1"># establish numerical variables</span>
+        <span class="n">count_media</span><span class="p">,</span> <span class="n">mean_media</span><span class="p">,</span> <span class="n">min_media</span><span class="p">,</span> <span class="n">p25_media</span><span class="p">,</span> <span class="n">p50_media</span><span class="p">,</span> <span class="n">p75_media</span><span class="p">,</span> <span class="n">max_media</span> <span class="o">=</span>\
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;std&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">7</span><span class="p">,)</span>
+        
+        <span class="n">xtickvals</span> <span class="o">=</span> <span class="p">[</span><span class="n">count_media</span><span class="p">,</span> <span class="n">mean_media</span><span class="p">,</span> <span class="n">min_media</span><span class="p">,</span> <span class="n">p25_media</span><span class="p">,</span> <span class="n">p50_media</span><span class="p">,</span> <span class="n">p75_media</span><span class="p">,</span> <span class="n">max_media</span><span class="p">]</span>
+        <span class="n">xtickvals</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">xtickvals</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">mean_media</span> <span class="o">-</span> <span class="n">p50_media</span><span class="p">)</span> <span class="o">/</span> <span class="n">p50_media</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">xtickvals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="c1"># create and configure boxplot, plot axes, and spines</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">data</span><span class="o">=</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">medianprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;linewidth&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+                                <span class="c1">#  &#39;color&#39;: &#39;k&#39;,</span>
+                                <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                    <span class="n">meanprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;marker&#39;</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;markerfacecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> 
+                            <span class="s1">&#39;markeredgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+                    <span class="n">flierprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;marker&#39;</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+                                <span class="s1">&#39;markerfacecolor&#39;</span><span class="p">:</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                <span class="c1">#  &#39;markeredgecolor&#39;: &#39;black&#39;,</span>
+                                <span class="s1">&#39;markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
+                                <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+        
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticklabels</span><span class="o">=</span><span class="p">[])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> 
+                    <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;n=</span><span class="si">{</span><span class="n">xtickvals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> 
+                    <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+        
+        <span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">]</span>
+        
+        <span class="c1"># display numerical values</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">xtickvals</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]:</span>   <span class="c1"># mean</span>
+            <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.27</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">xtickvals</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>   <span class="c1"># median, p25, p50, p75</span>
+            <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.27</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">xtickvals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]:</span>   <span class="c1"># max</span>
+            <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.16</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">xtickvals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]:</span>   <span class="c1"># min</span>
+            <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">xtickvals</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]:</span>
+                <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.16</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">title_fontsize</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">savefile</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+        <span class="c1"># plt.savefig(filename, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=1000)</span>
+
+    <span class="k">return</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-are-the-distributions-of-budgets-of-each-film-media">
+<h1>What are the distributions of budgets of each film media?<a class="headerlink" href="#what-are-the-distributions-of-budgets-of-each-film-media" title="Permalink to this headline">#</a></h1>
+<p>We can start off by separating the data into individual dataframes for each film media so that we can analyze each individually.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;film_type&#39;</span><span class="p">,</span> <span class="s1">&#39;inflation_adjusted_budget&#39;</span><span class="p">]]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">film_type</span> <span class="o">==</span> <span class="s1">&#39;Film&#39;</span><span class="p">]</span>
+<span class="n">film</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span><span class="p">)</span>
+<span class="n">film</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Film&#39;</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;film_type&#39;</span><span class="p">,</span> <span class="s1">&#39;inflation_adjusted_budget&#39;</span><span class="p">]]</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">film_type</span> <span class="o">==</span> <span class="s1">&#39;Digital&#39;</span><span class="p">]</span>
+<span class="n">digital</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span><span class="p">)</span>
+<span class="n">digital</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Digital&#39;</span><span class="p">]</span>
+
+<span class="n">fd</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;film_type&#39;</span><span class="p">,</span> <span class="s1">&#39;inflation_adjusted_budget&#39;</span><span class="p">]]</span>
+<span class="n">fd</span> <span class="o">=</span> <span class="n">fd</span><span class="p">[</span><span class="n">fd</span><span class="o">.</span><span class="n">film_type</span> <span class="o">==</span> <span class="s1">&#39;Film and Digital&#39;</span><span class="p">]</span>
+<span class="n">f_and_d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">inflation_adjusted_budget</span><span class="p">)</span>
+<span class="n">f_and_d</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Film and Digital&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot 4:</strong> Boxplots of the distribution of budgets for each film media.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualize the distribution of movie budgets by movie media</span>
+<span class="n">make_subplot_viz</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="n">film</span><span class="p">,</span> <span class="n">digital</span><span class="p">,</span> <span class="n">f_and_d</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Film&#39;</span><span class="p">,</span> <span class="s1">&#39;Digital&#39;</span><span class="p">,</span> <span class="s1">&#39;Film and Digital&#39;</span><span class="p">],</span>
+                 <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Inflation Adjusted Budget (in millions $) by Film Media&#39;</span><span class="p">,</span>
+                 <span class="n">savefile</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;Budget_by_Media.png&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/movie_analysis_35_0.png" src="../../_images/movie_analysis_35_0.png" />
+</div>
+</div>
+<p>We can see that the combination of film and digital tends to make a movie more expensive, while movies in film tend to run the cheapest. We can also see that there are some outliers for this data, such as the most expensive movie being a digital movie with a budget of about $452 million. Also, there are quite a few outliers for film movies, so even though film movies tend to be the least expensive, this is not always the case.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./archived_projects\movie_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Movie Data Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../microbe_analysis/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Microbe Data Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Fahmi I.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
