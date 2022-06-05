@@ -1,0 +1,1758 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tweet Analysis Notebook &#8212; Portfolio</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Movie Data Analysis" href="../movie_analysis/README.html" />
+    <link rel="prev" title="Russian Troll Tweet Analysis" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Portfolio</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to My Portfolio
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../bellabeat_case_study/bellabeat.html">
+   Bellabeat Case Study
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../bellabeat_case_study/bellabeat_analysis.html">
+     Bellabeat Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Archived Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../note.html">
+   Note About Archived Projects
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Russian Troll Tweet Analysis
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Tweet Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../movie_analysis/README.html">
+   Movie Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../movie_analysis/movie_analysis.html">
+     Movie Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../microbe_analysis/README.html">
+   Microbe Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../microbe_analysis/microbe_analysis_notebook.html">
+     Microbe Analysis Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../absenteeism_analysis/README.html">
+   Absenteeism Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../absenteeism_analysis/absentee_analysis_preprocessing.html">
+     Preprocessing Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../absenteeism_analysis/absentee_analysis_logistic_regression.html">
+     Logistic Regression Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../absenteeism_analysis/absentee_integration.html">
+     Integration Notebook
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/fahm1/Portfolio/master?urlpath=tree/docs/archived_projects/troll_tweet_analysis/tweet_analysis_notebook.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/fahm1/Portfolio"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/fahm1/Portfolio/issues/new?title=Issue%20on%20page%20%2Farchived_projects/troll_tweet_analysis/tweet_analysis_notebook.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/archived_projects/troll_tweet_analysis/tweet_analysis_notebook.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tweet Analysis Notebook
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-run-once">
+   Setup (run once):
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-analysis">
+   Data Analysis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-characteristics-of-troll-accounts-and-their-tweets-make-them-successful">
+   What characteristics of troll accounts and their tweets make them successful?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-account-category-is-most-successful">
+   Which account category is most successful?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-some-specific-characteristics-of-the-most-successful-account-category">
+   What are some specific characteristics of the most successful account category?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-type-of-language-are-the-top-troll-accounts-using">
+   What type of language are the top troll accounts using?
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tweet Analysis Notebook</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tweet Analysis Notebook
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-run-once">
+   Setup (run once):
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-analysis">
+   Data Analysis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-characteristics-of-troll-accounts-and-their-tweets-make-them-successful">
+   What characteristics of troll accounts and their tweets make them successful?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-account-category-is-most-successful">
+   Which account category is most successful?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-some-specific-characteristics-of-the-most-successful-account-category">
+   What are some specific characteristics of the most successful account category?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-type-of-language-are-the-top-troll-accounts-using">
+   What type of language are the top troll accounts using?
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="tweet-analysis-notebook">
+<h1>Tweet Analysis Notebook<a class="headerlink" href="#tweet-analysis-notebook" title="Permalink to this headline">#</a></h1>
+<p>In this project, we will analyze Russian troll tweet data from the dataset provided by <a class="reference external" href="https://github.com/fivethirtyeight/russian-troll-tweets/">fivethirtyeight</a>.<br />
+<a class="reference external" href="http://pwarren.people.clemson.edu/Linvill_Warren_TrollFactory.pdf">Some analysis</a> of this data has already been completed and published by Linvill and Warren of Clemson university.</p>
+<p>In this analysis, we will be trying to answer one primary question:<br />
+<strong>What characteristics of troll accounts and their tweets make them successful?</strong></p>
+<p>In this case, we are equating success to the number of followers the troll account has, as a higher follower account will allow the troll to spread their message to a greater number of individuals.</p>
+<p>As we answer this question, we will be answering some secondary questions that will help guide our answer, such as:</p>
+<ul class="simple">
+<li><p>Which account category is most successful?</p></li>
+<li><p>What are some specific characteristics of the most successful account category?</p></li>
+<li><p>What type of language are the top troll accounts using?</p></li>
+</ul>
+</section>
+<section id="setup-run-once">
+<h1>Setup (run once):<a class="headerlink" href="#setup-run-once" title="Permalink to this headline">#</a></h1>
+<p>This setup will get us to a clean DataFrame with which we will do further analysis and create visualizations with.<br />
+This process only needs to be run all the way through one time in order to save a DataFrame with the data we need.</p>
+<p>We will start off with some data cleaning and preparation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this CSV is not in this repository due to its size (1 GB+), but it is available from the <a class="reference external" href="https://github.com/fivethirtyeight/russian-troll-tweets/">fivethirtyeight repository</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;all_tweets.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2984389 entries, 0 to 2984388
+Data columns (total 15 columns):
+ #   Column              Dtype 
+---  ------              ----- 
+ 0   external_author_id  object
+ 1   author              object
+ 2   content             object
+ 3   region              object
+ 4   language            object
+ 5   publish_date        object
+ 6   harvested_date      object
+ 7   following           object
+ 8   followers           object
+ 9   updates             object
+ 10  post_type           object
+ 11  account_type        object
+ 12  new_june_2018       object
+ 13  retweet             object
+ 14  account_category    object
+dtypes: object(15)
+memory usage: 341.5+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that there are just under 3 million rows and 15 columns.</p>
+<p>We won’t be making use of the ‘harvested_date’ or ‘new_june_2018’ columns, so we will drop them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;harvested_date&#39;</span><span class="p">,</span> <span class="s1">&#39;new_june_2018&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>external_author_id</th>
+      <th>author</th>
+      <th>content</th>
+      <th>region</th>
+      <th>language</th>
+      <th>publish_date</th>
+      <th>following</th>
+      <th>followers</th>
+      <th>updates</th>
+      <th>post_type</th>
+      <th>account_type</th>
+      <th>retweet</th>
+      <th>account_category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2535564756.0</td>
+      <td>1D_NICOLE_</td>
+      <td>#FoodPoisoning is not a joke! #Walmart #KochFa...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>11/26/2015 22:20</td>
+      <td>48</td>
+      <td>40</td>
+      <td>394</td>
+      <td>RETWEET</td>
+      <td>Koch</td>
+      <td>1</td>
+      <td>Fearmonger</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2535564756.0</td>
+      <td>1D_NICOLE_</td>
+      <td>Thanks God that #turkey i ate few days ago was...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>11/26/2015 22:35</td>
+      <td>48</td>
+      <td>40</td>
+      <td>395</td>
+      <td>RETWEET</td>
+      <td>Koch</td>
+      <td>1</td>
+      <td>Fearmonger</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2535564756.0</td>
+      <td>1D_NICOLE_</td>
+      <td>who's got the worst make up ever, don't tell m...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>5/25/2015 12:38</td>
+      <td>59</td>
+      <td>51</td>
+      <td>352</td>
+      <td>NaN</td>
+      <td>Koch</td>
+      <td>0</td>
+      <td>Fearmonger</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can see that we get we get the actual tweet text in the ‘content’ column, as well as some other Twitter information, such as author, following, etc.</p>
+<p>Interestingly, there is also an ‘account_category’ column, which identifies what type of activity the troll account is performing, which we will analyze later.</p>
+<p>It is also worth noting that <strong>the ‘retweet’ column is not a count of retweets for any one tweet</strong>, but rather a binary value of whether or not the tweet is a retweet made by the troll account (1 = retweet, 0 = not a retweet).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NonEnglish          837725
+RightTroll          719087
+NewsFeed            599294
+LeftTroll           427811
+HashtagGamer        241827
+Commercial          122582
+Fearmonger           22141
+Unknown              13905
+account_category        17
+Name: account_category, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that ‘NonEnglish’ troll accounts weren’t placed into a specific category, so we will drop those rows later.</p>
+<p>We can also see that there is quite the diversity with the account categories, though there seems to be some erroneous data where the listed account_category is ‘account_category’ in 17 rows.<br />
+We can filter those out to avoid working with bad data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span> <span class="o">!=</span> <span class="s1">&#39;account_category&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>external_author_id    object
+author                object
+content               object
+region                object
+language              object
+publish_date          object
+following             object
+followers             object
+updates               object
+post_type             object
+account_type          object
+retweet               object
+account_category      object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We should also change the data types of some of the columns we will do further analysis on so that they will be compatible with the functions that we use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s1">&#39;external_author_id&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span>
+                <span class="s1">&#39;following&#39;</span><span class="p">:</span>          <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+                <span class="s1">&#39;followers&#39;</span><span class="p">:</span>          <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+                <span class="s1">&#39;retweet&#39;</span><span class="p">:</span>            <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span>
+                <span class="s1">&#39;content&#39;</span><span class="p">:</span>            <span class="s1">&#39;str&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;account_category&#39;</span><span class="p">:</span>   <span class="s1">&#39;str&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since we have tweet content, it may be interesting to take a look at a sentiment analysis of the data to gather more dimensions of the data.<br />
+Sentiment analysis is best done with English tweets, so we will remove any non-English tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">region</span> <span class="o">==</span> <span class="s1">&#39;United States&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">language</span> <span class="o">==</span> <span class="s2">&quot;English&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 1860606 entries, 0 to 2984171
+Data columns (total 13 columns):
+ #   Column              Dtype 
+---  ------              ----- 
+ 0   external_author_id  object
+ 1   author              object
+ 2   content             object
+ 3   region              object
+ 4   language            object
+ 5   publish_date        object
+ 6   following           object
+ 7   followers           object
+ 8   updates             object
+ 9   post_type           object
+ 10  account_type        object
+ 11  retweet             object
+ 12  account_category    object
+dtypes: object(13)
+memory usage: 198.7+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>This cuts the data down to about 1.86 million rows, which is still a lot of data.</p>
+<p>We can now run a sentiment analysis for each row using the <a class="reference external" href="https://textblob.readthedocs.io/en/dev/index.html">TextBlob</a> library.<br />
+This process will take a while to run, so we will save the results to a CSV file so that we don’t have to do this again in the future.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;polarity&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;subjectivity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sentiment</span><span class="o">.</span><span class="n">polarity</span><span class="p">)),</span> \
+                                     <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sentiment</span><span class="o">.</span><span class="n">subjectivity</span><span class="p">))</span>
+
+<span class="c1"># save to csv if coming back to the file later and to avoid running sentiment analysis again</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;df_with_sentiment.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With that, the setup of our DataFrame is complete.</p>
+</section>
+<section id="data-analysis">
+<h1>Data Analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will read in the previously saved CSV file to start to analyze the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = pd.read_csv(&#39;df_with_sentiment.csv&#39;)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;C:/Users/fahmi/Documents/Portfolio/Large Files/df_with_sentiment.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We may want to consider looking only at tweets that have a non-zero polarity in the future, but this is not done in this analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = df[(df_eng.polarity != 0)   # filter out tweets with no polarity, not used in this analysis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NewsFeed        574694
+RightTroll      497945
+LeftTroll       416253
+HashtagGamer    228105
+Commercial      112051
+Fearmonger       21838
+Unknown           6165
+NonEnglish        3555
+Name: account_category, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that there are still some ‘NonEnglish’ accounts, but their content is in English.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span> <span class="o">==</span> <span class="s1">&#39;NonEnglish&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>external_author_id</th>
+      <th>author</th>
+      <th>content</th>
+      <th>region</th>
+      <th>language</th>
+      <th>publish_date</th>
+      <th>following</th>
+      <th>followers</th>
+      <th>updates</th>
+      <th>post_type</th>
+      <th>account_type</th>
+      <th>retweet</th>
+      <th>account_category</th>
+      <th>polarity</th>
+      <th>subjectivity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15800</th>
+      <td>2.398931e+09</td>
+      <td>5EMEN5EMENICH</td>
+      <td>World leaders, please wake up. #PutinPeacemake...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>9/28/2015 16:14</td>
+      <td>552</td>
+      <td>718</td>
+      <td>11196</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>37258</th>
+      <td>2.186395e+09</td>
+      <td>AHMADYUSUFF03</td>
+      <td>Modern and perfect. http://t.co/8xxrOSwpag</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>10/10/2015 7:28</td>
+      <td>8</td>
+      <td>0</td>
+      <td>1749</td>
+      <td>RETWEET</td>
+      <td>Arabic</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.600000</td>
+      <td>0.650000</td>
+    </tr>
+    <tr>
+      <th>53357</th>
+      <td>2.425594e+09</td>
+      <td>ALENAZELDINA</td>
+      <td>Since the topic of children killed by Kiev eli...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>12/6/2015 20:12</td>
+      <td>411</td>
+      <td>216</td>
+      <td>5127</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.150000</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>53358</th>
+      <td>2.531597e+09</td>
+      <td>ALEXBORONIN</td>
+      <td>'@realDonaldTrump @megynkelly From Russia http...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>11/4/2015 13:30</td>
+      <td>431</td>
+      <td>371</td>
+      <td>675</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>100580</th>
+      <td>2.252047e+09</td>
+      <td>ANASTASSIAZZ</td>
+      <td>Berlin calls for discussion of #Assad's future...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>1/2/2017 14:10</td>
+      <td>772</td>
+      <td>223</td>
+      <td>214</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.000000</td>
+      <td>0.125000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1845532</th>
+      <td>2.260578e+09</td>
+      <td>YAROSLAVVELIKY</td>
+      <td>The Hillary Clinton Excuse Express rolls along...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>5/4/2017 2:06</td>
+      <td>83</td>
+      <td>4020</td>
+      <td>1705</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>-0.050000</td>
+      <td>0.050000</td>
+    </tr>
+    <tr>
+      <th>1845533</th>
+      <td>2.260578e+09</td>
+      <td>YAROSLAVVELIKY</td>
+      <td>🆘‼️🛩🔥USA: Dashcam footage shows the moment a p...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>5/4/2017 8:07</td>
+      <td>83</td>
+      <td>4019</td>
+      <td>1708</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1849286</th>
+      <td>2.426557e+09</td>
+      <td>ZNATNIYBUKHARIK</td>
+      <td>Followers - 337, Unfollowers - 97. I didn't kn...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>11/27/2015 11:37</td>
+      <td>1637</td>
+      <td>739</td>
+      <td>7016</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.000000</td>
+      <td>0.357143</td>
+    </tr>
+    <tr>
+      <th>1849287</th>
+      <td>2.426557e+09</td>
+      <td>ZNATNIYBUKHARIK</td>
+      <td>My week on Twitter: 96 New Followers, 1.43K Me...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>12/21/2015 13:40</td>
+      <td>1632</td>
+      <td>744</td>
+      <td>7178</td>
+      <td>RETWEET</td>
+      <td>Russian</td>
+      <td>1</td>
+      <td>NonEnglish</td>
+      <td>0.136364</td>
+      <td>0.454545</td>
+    </tr>
+    <tr>
+      <th>1860605</th>
+      <td>3.093874e+09</td>
+      <td>_YOUR_LIFESTYLE</td>
+      <td>Amazing! Found my script: Download ReBuild - W...</td>
+      <td>United States</td>
+      <td>English</td>
+      <td>6/25/2016 11:27</td>
+      <td>40</td>
+      <td>40</td>
+      <td>817</td>
+      <td>NaN</td>
+      <td>Russian</td>
+      <td>0</td>
+      <td>NonEnglish</td>
+      <td>0.750000</td>
+      <td>0.900000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3555 rows × 15 columns</p>
+</div></div></div>
+</div>
+<p>More importantly, we might want to dial down the number of account categories to analyze in order to get a clear understanding of the data.<br />
+We will focus on the account categories that were analyzed in the <a class="reference external" href="http://pwarren.people.clemson.edu/Linvill_Warren_TrollFactory.pdf">Linvill and Warren paper</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter out account categories not analysed in the Linvill &amp; Warren paper</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span> <span class="o">!=</span> <span class="s1">&#39;NonEnglish&#39;</span><span class="p">)</span>  <span class="o">&amp;</span> \
+                 <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span> <span class="o">!=</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">)</span>     <span class="o">&amp;</span> \
+                 <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">account_category</span> <span class="o">!=</span> <span class="s1">&#39;Commercial&#39;</span><span class="p">)]</span>   \
+            <span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_plot</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1738835 entries, 0 to 1738834
+Data columns (total 15 columns):
+ #   Column              Dtype  
+---  ------              -----  
+ 0   external_author_id  float64
+ 1   author              object 
+ 2   content             object 
+ 3   region              object 
+ 4   language            object 
+ 5   publish_date        object 
+ 6   following           int64  
+ 7   followers           int64  
+ 8   updates             int64  
+ 9   post_type           object 
+ 10  account_type        object 
+ 11  retweet             int64  
+ 12  account_category    object 
+ 13  polarity            float64
+ 14  subjectivity        float64
+dtypes: float64(3), int64(4), object(8)
+memory usage: 199.0+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are still left with just under 1.75 million tweets.</p>
+<p>Let’s take a quick look at the distributions of followers.</p>
+<p><strong>Plot 0:</strong> Distribution of Tweet Count by Number of Followers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="o">.</span><span class="n">followers</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Followers&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Tweet Count&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50000</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&#39;tweet_follower_distr.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=200)</span>
+<span class="c1"># plt.savefig(&#39;tweet_follower_distr.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=800)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tweet_analysis_notebook_41_0.png" src="../../_images/tweet_analysis_notebook_41_0.png" />
+</div>
+</div>
+<p>We can see that the vast majority of tweets were made by trolls with a follower count of less than 10,000.<br />
+This reveals to us that most of the tweets were sent out by trolls with a small number of followers, and therefore little success.</p>
+<p>In order to analyze success in this analysis, we will be looking at the number of followers of the troll account.<br />
+In this case, we are going to set 10,000 followers as the threshold for success.</p>
+<p>We will also group the tweets by ‘external_author_id’ in order to avoid repeat counts of the same account.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MIN_FOLLOWERS</span> <span class="o">=</span> <span class="mi">10000</span>           <span class="c1"># somewhat arbitrary minimum follower count, 10,000 in this case to only analyse successful troll accounts</span>
+<span class="n">MAX_FOLLOWERS</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>    <span class="c1"># maximum number of followers to include in the analysis, may be specified later</span>
+
+<span class="c1"># group by external_author_id in order to avoid repeat analysis of the same account</span>
+<span class="n">df_plot</span> <span class="o">=</span> <span class="n">df_plot</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_plot</span><span class="o">.</span><span class="n">followers</span> <span class="o">&gt;</span> <span class="n">MIN_FOLLOWERS</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_plot</span><span class="o">.</span><span class="n">followers</span> <span class="o">&lt;</span> <span class="n">MAX_FOLLOWERS</span><span class="p">)]</span> \
+                 <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;external_author_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;account_category&#39;</span><span class="p">:</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span>
+                                                     <span class="s1">&#39;following&#39;</span><span class="p">:</span>        <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                     <span class="s1">&#39;followers&#39;</span><span class="p">:</span>        <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                     <span class="s1">&#39;updates&#39;</span><span class="p">:</span>          <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                     <span class="s1">&#39;retweet&#39;</span><span class="p">:</span>          <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                     <span class="s1">&#39;polarity&#39;</span><span class="p">:</span>         <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                     <span class="s1">&#39;subjectivity&#39;</span><span class="p">:</span>     <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_plot</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 58 entries, 0 to 57
+Data columns (total 8 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   external_author_id  58 non-null     float64
+ 1   account_category    58 non-null     object 
+ 2   following           58 non-null     float64
+ 3   followers           58 non-null     float64
+ 4   updates             58 non-null     float64
+ 5   retweet             58 non-null     float64
+ 6   polarity            58 non-null     float64
+ 7   subjectivity        58 non-null     float64
+dtypes: float64(7), object(1)
+memory usage: 3.8+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>This leaves us with 58 individual successful troll accounts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_plot</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>external_author_id</th>
+      <th>account_category</th>
+      <th>following</th>
+      <th>followers</th>
+      <th>updates</th>
+      <th>retweet</th>
+      <th>polarity</th>
+      <th>subjectivity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.687184e+09</td>
+      <td>LeftTroll</td>
+      <td>7010.135730</td>
+      <td>13221.878847</td>
+      <td>13667.435050</td>
+      <td>0.697117</td>
+      <td>-0.012913</td>
+      <td>0.347428</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.484643e+09</td>
+      <td>NewsFeed</td>
+      <td>7066.417235</td>
+      <td>17636.154758</td>
+      <td>1556.253142</td>
+      <td>0.024776</td>
+      <td>0.023272</td>
+      <td>0.204788</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.494112e+09</td>
+      <td>NewsFeed</td>
+      <td>6579.642109</td>
+      <td>12975.633762</td>
+      <td>16710.993953</td>
+      <td>0.001107</td>
+      <td>0.041540</td>
+      <td>0.207917</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="what-characteristics-of-troll-accounts-and-their-tweets-make-them-successful">
+<h1>What characteristics of troll accounts and their tweets make them successful?<a class="headerlink" href="#what-characteristics-of-troll-accounts-and-their-tweets-make-them-successful" title="Permalink to this headline">#</a></h1>
+<p>We can now analyze what is making these accounts successful.</p>
+<p>We can create a correlation matrix to see how the number of followers and other characteristics of the account affect one another.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># columns to not be included in the correlation matrix</span>
+<span class="n">col_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;external_author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;updates&#39;</span><span class="p">]</span>
+
+<span class="n">df_corr</span> <span class="o">=</span> <span class="n">df_plot</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_to_drop</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">df_corr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function used with PairGrid object</span>
+<span class="k">def</span> <span class="nf">hide_current_axis</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Hides the current axis&quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot (1):</strong> Relationships Between Different Aspects of Successful Russian Troll Accounts and Their Tweets</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create figure and set default font size</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+<span class="c1"># create pairgrid object</span>
+<span class="n">pg</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">PairGrid</span><span class="p">(</span><span class="n">df_plot</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_to_drop</span><span class="p">),</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;account_category&#39;</span><span class="p">,</span> <span class="n">diag_sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># create new axis for heatmap and colorbar</span>
+<span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">_</span><span class="p">),</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">get_points</span><span class="p">()</span>
+<span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">ymin</span><span class="p">),</span> <span class="p">(</span><span class="n">xmax</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">get_points</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">xmin</span> <span class="o">-</span> <span class="mf">0.052</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mf">0.003</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mf">0.003</span><span class="p">],</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.91</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.678</span><span class="p">],</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+
+<span class="c1"># create heatmap labels and colormap</span>
+<span class="n">ax1_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Followers&#39;</span><span class="p">,</span> <span class="s1">&#39;Retweet&#39;</span><span class="p">,</span> <span class="s1">&#39;Polarity&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjectivity&#39;</span><span class="p">]</span>
+<span class="n">ax2_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Following&#39;</span><span class="p">,</span> <span class="s1">&#39;Followers&#39;</span><span class="p">,</span> <span class="s1">&#39;Retweet&#39;</span><span class="p">,</span> <span class="s1">&#39;Polarity&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># create and edit heatmap and colorbar</span>
+<span class="n">hm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_corr</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">linewidths</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+                 <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar_ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+                 <span class="n">yticklabels</span><span class="o">=</span><span class="n">ax2_labels</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">ax1_labels</span><span class="p">)</span>
+
+<span class="n">hm</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelright</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labeltop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">hm</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">hm</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">hm</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_ticks</span><span class="p">([</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">])</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">outline</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">outline</span><span class="o">.</span><span class="n">set_edgecolor</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="c1"># configure pairgrid object</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">map_upper</span><span class="p">(</span><span class="n">hide_current_axis</span><span class="p">)</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">map_diag</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># # work in progress to make the diagonal into boxplots:</span>
+<span class="c1"># pg.map_diag(hide_current_axis)</span>
+<span class="c1"># cats = [&#39;following&#39;, &#39;followers&#39;, &#39;retweet&#39;, &#39;polarity&#39;, &#39;subjectivity&#39;]</span>
+<span class="c1"># for idx, ax in enumerate(pg.axes.flat[0:25:6]):</span>
+<span class="c1">#     # sns.boxplot(data=df_plot, x=cats[idx], y=&#39;account_category&#39;, ax=ax, palette=&#39;tab10&#39;, width=0.5)</span>
+<span class="c1">#     # ax.set_xticklabels([])</span>
+<span class="c1">#     # ax.set_yticklabels([])</span>
+<span class="c1">#     ax.spines[[&#39;top&#39;, &#39;bottom&#39;, &#39;left&#39;, &#39;right&#39;]].set_visible(False)</span>
+<span class="c1">#     sns.boxplot(data=df_plot, x=&#39;followers&#39;, y=&#39;account_category&#39;, orient=&#39;h&#39;, </span>
+<span class="c1">#                 palette=&#39;tab10&#39;, width=0.5, ax=ax,</span>
+<span class="c1">#                 medianprops={&#39;linewidth&#39;: 2.25,</span>
+<span class="c1">#                             &#39;color&#39;: &#39;k&#39;,</span>
+<span class="c1">#                             &#39;alpha&#39;: 1},</span>
+<span class="c1">#                 flierprops={&#39;marker&#39;: &#39;o&#39;, </span>
+<span class="c1">#                             &#39;markeredgecolor&#39;: &#39;black&#39;,</span>
+<span class="c1">#                             &#39;markersize&#39;: 3, </span>
+<span class="c1">#                             &#39;alpha&#39;: 0.5})</span>
+<span class="c1">#     # ax.set_xticklabels([])</span>
+<span class="c1">#     # ax.set_yticklabels([])</span>
+<span class="c1">#     # ax.xaxis.set_tick_params(length=0)</span>
+<span class="c1">#     # ax.yaxis.set_tick_params(length=0)</span>
+<span class="c1"># pg.map_diag(hide_current_axis)</span>
+<span class="c1"># for idx, ax in enumerate(pg.axes.flat[0:25:6]):</span>
+<span class="c1">#     print(ax.get_position().get_points())</span>
+
+<span class="c1"># add a legend and legend title</span>
+<span class="n">pg</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">adjust_subtitles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.53</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.119</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">),</span>
+              <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.56</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="s1">&#39;Account Category    &#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">)</span>
+
+<span class="c1"># add linewidths to the heatmap manually</span>
+<span class="n">x_pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.06</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.512</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.962</span><span class="p">]</span>
+<span class="n">y_pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">65.464</span><span class="p">,</span> <span class="mf">52.6</span><span class="p">,</span> <span class="mf">39.81</span><span class="p">,</span> <span class="mf">27.05</span><span class="p">]</span>
+<span class="n">line_count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x_pos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mf">64.9</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="n">line_count</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;heavy&#39;</span><span class="p">,</span> 
+             <span class="n">c</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;_&#39;</span> <span class="o">*</span> <span class="n">line_count</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;heavy&#39;</span><span class="p">,</span> 
+             <span class="n">c</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="c1"># configure and edit labels</span>
+<span class="n">label_pads</span> <span class="o">=</span> <span class="p">[</span><span class="mf">31.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mf">31.5</span><span class="p">]</span>
+<span class="n">axis_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Following&#39;</span><span class="p">,</span> <span class="s1">&#39;Followers&#39;</span><span class="p">,</span> <span class="s1">&#39;Retweet&#39;</span><span class="p">,</span> <span class="s1">&#39;Polarity&#39;</span><span class="p">,</span> <span class="s1">&#39;Subjectivity&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">5</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">labelpad</span><span class="o">=</span><span class="n">label_pads</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">25</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">pg</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50000</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Relationships Between Different Aspects of Successful Russian Troll Accounts and Their Tweets&#39;</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.038</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="c1"># plt.savefig(&#39;tweet_characteristics.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=200)</span>
+<span class="c1"># plt.savefig(&#39;tweet_characteristics.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=800)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 864x864 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/tweet_analysis_notebook_52_1.png" src="../../_images/tweet_analysis_notebook_52_1.png" />
+</div>
+</div>
+<p>This is a very rich plot and it reveals to us many aspects of the successful troll accounts and tweets. Starting off with the heatmap, we can analyze linear correlations between some of the features, and we can see how they relate to one another. We see that the strongest positive correlation is between ‘Followers’ and ‘Following’ which suggests that as the troll accounts followed more people, they would have more followers themselves, and therefore a larger reach. This principle is observable on many different social media, where bot accounts tend to send out follow requests en masse in the hopes that they will get more followers themselves, which establishes some sort of legitimacy and a greater reach.<br />
+With the scatterplots and KDE plots, we can analyze any non-linear relationships and any grouping that occurs by group category. For example, we can see that the ‘NewsFeed’ accounts tend to send fairly neutral tweets in terms of polarity and subjectivity, while the political accounts of ‘LeftTrolls’ and ‘RightTrolls’ tend to send tweets that are more subjective and polar.</p>
+</section>
+<section id="which-account-category-is-most-successful">
+<h1>Which account category is most successful?<a class="headerlink" href="#which-account-category-is-most-successful" title="Permalink to this headline">#</a></h1>
+<p>We can now take a look at which account categories specifically have the most successful accounts.<br />
+The dataframe is already prepared, we just have to plot it.</p>
+<p><strong>Plot 2:</strong> Boxplots showing distributions of followers by account category</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_plot</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;followers&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;account_category&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> 
+            <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;tab10&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+            <span class="n">medianprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;linewidth&#39;</span><span class="p">:</span> <span class="mf">2.25</span><span class="p">,</span>
+                         <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+            <span class="n">flierprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;marker&#39;</span><span class="p">:</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> 
+                        <span class="s1">&#39;markeredgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
+                        <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+                
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Followers&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Account Category&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of Followers by Account Category&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+
+<span class="c1"># plt.savefig(&#39;followers_by_category.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=200)</span>
+<span class="c1"># plt.savefig(&#39;followers_by_category.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=800)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tweet_analysis_notebook_57_0.png" src="../../_images/tweet_analysis_notebook_57_0.png" />
+</div>
+</div>
+<p>We can see that troll accounts classified as ‘RightTrolls’ have the greatest number of successful accounts on average, followed by the ‘LeftTrolls’. Of course, while on average this is true, there is a signficant range of followers for the ‘RightTroll’ accounts, and some outliers for the ‘NewsFeed’ accounts are quite large as well. In total, this may imply that the ‘RightTrolls’ were the most successful accounts on average.</p>
+</section>
+<section id="what-are-some-specific-characteristics-of-the-most-successful-account-category">
+<h1>What are some specific characteristics of the most successful account category?<a class="headerlink" href="#what-are-some-specific-characteristics-of-the-most-successful-account-category" title="Permalink to this headline">#</a></h1>
+<p>First we isolate the DataFrame that was grouped by troll account to just the RightTroll accounts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_right</span> <span class="o">=</span> <span class="n">df_plot</span><span class="p">[</span><span class="n">df_plot</span><span class="p">[</span><span class="s1">&#39;account_category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;RightTroll&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then create a correlation matrix and mask for this new DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_right_corr</span> <span class="o">=</span> <span class="n">df_right</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_to_drop</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">mask_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">df_right_corr</span><span class="p">)[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot 3:</strong> Heatmap showing correlations between characteristics of successful RightTroll accounts</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">diverging_palette</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="n">as_cmap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">hm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df_right_corr</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask_right</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span>
+                 <span class="n">linewidths</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">})</span>
+                
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">colorbar</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">3.14</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+         <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Correlations Between</span><span class="se">\n</span><span class="s1">Different Aspects</span><span class="se">\n</span><span class="s1">of RightTroll Accounts&#39;</span><span class="p">,</span>
+         <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+
+<span class="c1"># plt.savefig(&#39;right_heatmap.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=200)</span>
+<span class="c1"># plt.savefig(&#39;right_heatmap.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=800)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tweet_analysis_notebook_65_0.png" src="../../_images/tweet_analysis_notebook_65_0.png" />
+</div>
+</div>
+<p>We can see that the ‘RightTrolls’ have an even greater positive correlation between ‘Following’ and ‘Followers’, strongly implying that there is a linear relationship between the two variables. We can also observe that ‘Polarity’ seems to have a neutral correlation with the success of the ‘RightTrolls’, while ‘Subjectivity’ actually has a moderate negative correlation with the follower count.</p>
+</section>
+<section id="what-type-of-language-are-the-top-troll-accounts-using">
+<h1>What type of language are the top troll accounts using?<a class="headerlink" href="#what-type-of-language-are-the-top-troll-accounts-using" title="Permalink to this headline">#</a></h1>
+<p>Starting off with some more imports</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span><span class="p">,</span> <span class="n">STOPWORDS</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">TweetTokenizer</span>
+<span class="kn">from</span> <span class="nn">imageio</span> <span class="kn">import</span> <span class="n">imread</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to analyze the language of only the top troll accounts, we will need to isolate just the tweets made by those accounts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_words</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">followers</span> <span class="o">&gt;</span> <span class="mi">10000</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_words</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(595314,)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that this leaves us with just under 600,000 tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df_words.sort_values(by=&#39;publish_date&#39;, inplace=True)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we can convert the tweets to a long string of text so that we can tokenize the tweets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_words</span> <span class="o">=</span> <span class="n">df_words</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tt</span> <span class="o">=</span> <span class="n">TweetTokenizer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweet_tokens</span> <span class="o">=</span> <span class="n">TweetTokenizer</span><span class="p">()</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">all_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">tweet_tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7549902
+</pre></div>
+</div>
+</div>
+</div>
+<p>This leaves us with just about 750,000 ‘tokens’.</p>
+<p>We can update the default STOPWORDS list with some more stop words to remove error words and words that are not useful to analyze.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">STOPWORDS</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="s1">&#39;&gt;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;&lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;say&#39;</span><span class="p">,</span> <span class="s1">&#39;says&#39;</span><span class="p">,</span> <span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;will&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then remove any words that are just links or hashtags.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">only_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">token</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tweet_tokens</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">token</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span> \
+              <span class="ow">and</span> <span class="ow">not</span> <span class="n">token</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">token</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And once again turn the list into a long string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">only_words_str</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">only_words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can read in a mask for our wordcloud to make the wordcloud conform to a twitter-like shape and then run the WordCloud function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">twitter_mask</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;twitter_mask.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">twitter_mask</span><span class="p">,</span> <span class="n">contour_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">contour_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+                      <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">min_word_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stopwords</span><span class="o">=</span><span class="n">STOPWORDS</span><span class="p">)</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">only_words_str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot (4):</strong> Wordcloud of the top words used by successful troll accounts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="c1"># plt.savefig(&#39;tweet_wordcloud.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=200)</span>
+<span class="c1"># plt.savefig(&#39;tweet_wordcloud.png&#39;, bbox_inches=&#39;tight&#39;, facecolor=&#39;w&#39;, dpi=800)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/tweet_analysis_notebook_91_0.png" src="../../_images/tweet_analysis_notebook_91_0.png" />
+</div>
+</div>
+<p>We can see that a big focus of tweets sent out or retweeted by the successful troll accounts was political. With ‘trump’ being the single most common word and ‘obama’ being up there too, there was a big focus on US presidents in their tweets. Beyond that, some divisive language was very common, such as ‘death’, ‘murder’, ‘attack’, ‘shooting’, and ‘killed’. In general, this language could potentially serve to bring about quarreling and incite fear among those who read these tweets.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./archived_projects\troll_tweet_analysis"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Russian Troll Tweet Analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../movie_analysis/README.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Movie Data Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Fahmi I.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

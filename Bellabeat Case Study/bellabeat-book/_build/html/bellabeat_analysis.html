@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bellabeat Case Study &#8212; Bellabeat Case Study</title>
+    <title>Bellabeat Case Study &#8212; Portfolio</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -50,6 +50,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
@@ -89,14 +90,9 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
       
       
-      <img src="_static/bellabeat_banner.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Bellabeat Case Study</h1>
+      <h1 class="site-logo" id="site-title">Portfolio</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -112,7 +108,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Portfolio Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Bellabeat Case Study
@@ -126,7 +127,7 @@ const thebe_selector_output = ".output, .cell_output"
              <!-- To handle the deprecated key -->
             
             <div class="navbar_extra_footer">
-            <!-- Powered by <a href="https://jupyterbook.org">Jupyter Book</a> -->
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
             
         </div>
@@ -177,7 +178,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/bellabeat_analysis.ipynb"
+        <a href="https://mybinder.org/v2/gh/fahm1/Portfolio/master?urlpath=tree/docs/bellabeat_analysis.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -220,7 +221,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/fahm1/Portfolio"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -237,7 +238,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fbellabeat_analysis.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/fahm1/Portfolio/issues/new?title=Issue%20on%20page%20%2Fbellabeat_analysis.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -456,7 +457,8 @@ title="Print to PDF"
               <div>
                 
   <a class="reference internal image-reference" href="_images/bellabeat_banner.png"><img alt="_images/bellabeat_banner.png" class="align-left" src="_images/bellabeat_banner.png" style="width: 100%;" /></a>
-<section class="tex2jax_ignore mathjax_ignore" id="bellabeat-case-study">
+<!-- ```{tableofcontents}
+``` --><section class="tex2jax_ignore mathjax_ignore" id="bellabeat-case-study">
 <h1>Bellabeat Case Study<a class="headerlink" href="#bellabeat-case-study" title="Permalink to this headline">#</a></h1>
 <!-- # <span style="color:#FA8072">Bellabeat Case Study</span> -->
 <!-- !jupyter nbconvert --to markdown README.ipynb -->
@@ -541,22 +543,26 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_minute_sleep</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase/minuteSleep_merged.csv&#39;</span><span class="p">,</span> 
-                                    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_minute_sleep</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="sa">r</span><span class="s1">&#39;C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase/minuteSleep_merged.csv&#39;</span><span class="p">,</span> 
+    <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sleep</span> <span class="o">=</span> <span class="n">original_minute_sleep</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;logId&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Id&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;date_time&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sleep</span> <span class="o">=</span> <span class="n">original_minute_sleep</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;logId&#39;</span><span class="p">)</span>\
+                                <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Id&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;date_time&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sleep</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#todo</span>
+<span class="n">df_sleep</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -935,7 +941,7 @@ Name: time_diff, Length: 376, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bellabeat_analysis_38_0.png" src="_images/bellabeat_analysis_38_0.png" />
+<img alt="_images/bellabeat_analysis_39_0.png" src="_images/bellabeat_analysis_39_0.png" />
 </div>
 </div>
 </section>

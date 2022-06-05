@@ -1,0 +1,43 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+
+- caption: Portfolio Projects
+  chapters:
+  - file: bellabeat_case_study/bellabeat.md
+    sections:
+    - file: bellabeat_case_study/bellabeat_analysis
+      title: Bellabeat Notebook
+
+- caption: Archived Projects
+  chapters: 
+  - file: archived_projects/note.md
+
+  - file: archived_projects/troll_tweet_analysis/README.md
+    title: Russian Troll Tweet Analysis
+    sections:
+    - file: archived_projects/troll_tweet_analysis/tweet_analysis_notebook
+
+  - file: archived_projects/movie_analysis/README.md
+    title: Movie Analysis
+    sections:
+    - file: archived_projects/movie_analysis/movie_analysis
+
+  - file: archived_projects/microbe_analysis/README.md
+    title: Microbe Analysis
+    sections:
+    - file: archived_projects/microbe_analysis/microbe_analysis_notebook
+  
+  - file: archived_projects/absenteeism_analysis/README.md
+    title: Absenteeism Analysis
+    sections:
+    - file: archived_projects/absenteeism_analysis/absentee_analysis_preprocessing
+    - file: archived_projects/absenteeism_analysis/absentee_analysis_logistic_regression
+    - file: archived_projects/absenteeism_analysis/absentee_integration
+
+# ````{div} full-width
+# ![](file_name.png)
+# ````

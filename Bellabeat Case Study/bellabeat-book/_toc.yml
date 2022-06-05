@@ -3,5 +3,11 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: bellabeat_analysis
+# chapters:
+parts:
+- caption: Portfolio Projects
+  chapters: 
+  - file: bellabeat_analysis
+# - caption: Archived Projects
+#   chapters:
+#   - file: 
