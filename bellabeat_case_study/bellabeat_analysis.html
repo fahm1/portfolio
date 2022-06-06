@@ -42,40 +42,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script kind="utterances">
-
-    var commentsRunWhenDOMLoaded = cb => {
-    if (document.readyState != 'loading') {
-        cb()
-    } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', cb)
-    } else {
-        document.attachEvent('onreadystatechange', function() {
-        if (document.readyState == 'complete') cb()
-        })
-    }
-}
-
-var addUtterances = () => {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://utteranc.es/client.js";
-    script.async = "async";
-
-    script.setAttribute("repo", "https://github.com/fahm1/Portfolio");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("theme", "github-light");
-    script.setAttribute("label", "💬 comment");
-    script.setAttribute("crossorigin", "anonymous");
-
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
-        section = sections[sections.length-1];
-        section.appendChild(script);
-    }
-}
-commentsRunWhenDOMLoaded(addUtterances);
-</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -262,10 +228,6 @@ const thebe_selector_output = ".output, .cell_output"
 </nav></div>
         <div class="bd-sidebar__bottom">
              <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
             
         </div>
     </div>
@@ -476,7 +438,7 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#prepare-phase">
    Prepare Phase:
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#business-task">
      Business Task:
@@ -488,7 +450,7 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#process-phase">
    Process Phase:
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-libraries">
      Import Libraries:
@@ -505,7 +467,7 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#act-phase">
    Act Phase:
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sleep-analysis">
      Sleep Analysis
@@ -546,7 +508,7 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#prepare-phase">
    Prepare Phase:
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#business-task">
      Business Task:
@@ -558,7 +520,7 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#process-phase">
    Process Phase:
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-libraries">
      Import Libraries:
@@ -575,7 +537,7 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#act-phase">
    Act Phase:
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sleep-analysis">
      Sleep Analysis
@@ -594,7 +556,6 @@ title="Print to PDF"
               <div>
                 
   <a class="reference internal image-reference" href="../_images/bellabeat_banner.png"><img alt="../_images/bellabeat_banner.png" class="align-left" src="../_images/bellabeat_banner.png" style="width: 100%;" /></a>
-<p>todo: ghpimport</p>
 <section class="tex2jax_ignore mathjax_ignore" id="bellabeat-case-study">
 <h1>Bellabeat Case Study<a class="headerlink" href="#bellabeat-case-study" title="Permalink to this headline">#</a></h1>
 <!-- # <span style="color:#FA8072">Bellabeat Case Study</span> -->
@@ -1078,7 +1039,7 @@ Name: time_diff, Length: 376, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_39_0.png" src="../_images/bellabeat_analysis_39_0.png" />
+<img alt="../_images/bellabeat_analysis_38_0.png" src="../_images/bellabeat_analysis_38_0.png" />
 </div>
 </div>
 </section>
