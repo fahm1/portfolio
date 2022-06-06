@@ -6,9 +6,6 @@
 # :width: 100%
 # ```
 
-# <!-- ```{tableofcontents}
-# ``` -->
-
 # # Bellabeat Case Study
 # <!-- # <span style="color:#FA8072">Bellabeat Case Study</span> -->
 # <!-- !jupyter nbconvert --to markdown README.ipynb -->

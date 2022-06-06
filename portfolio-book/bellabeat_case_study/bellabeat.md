@@ -1,3 +1,7 @@
 # Bellabeat Case Study
 
-Brief overview here. 
+[Project Overview]
+
+```{warning}
+This project is **in-progress** as of right now. Please come back later for updates. 
+```
