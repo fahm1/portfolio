@@ -32,7 +32,7 @@
 # --- -->
 
 # ## 1. Introduction
-# 
+
 # Bellabeat is a small high-tech manufacturer of health-focused products with dreams to become a larger player in the global [smart device](https://en.wikipedia.org/wiki/Smart_device) industry. 
 # The main focus of this case study is to analyze the health data collected from smart devices to determine new growth opportunities for the company. 
 # 
@@ -51,7 +51,7 @@
 # ---
 
 # ## 2. Ask-Phase
-# 
+
 # ### 2.1 Business Task
 # Analyze __non-Bellabeat__ smart device usage to gain insight on how consumers use their smart devices and discover trends that could be used to improve Bellabeat's marketing strategy. 
 # 
@@ -70,7 +70,7 @@
 # ---
 
 # ## 3. Prepare Phase
-# 
+
 # ### 3.1 Dataset Information
 # ````{margin}
 # ```{note}
@@ -144,11 +144,12 @@
 
 # Starting off by importing the libraries we will need, all of which are standard for data analysis. 
 
-# In[2]:
+# In[447]:
 
 
 import numpy as np
 import pandas as pd
+import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
@@ -157,7 +158,7 @@ import os
 # We can then take a look at which data files we have available.  
 # __TODO:__ change the path to be generalized
 
-# In[3]:
+# In[2]:
 
 
 os.listdir(r'C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase')
@@ -168,17 +169,17 @@ os.listdir(r'C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase')
 # We can now start reading in the files that we will be using in our analysis.  
 # But first, we can create a simple function that will return important information about each created dataframe, such as the column names, shape, duplicate row count, and missing value count. 
 
-# In[53]:
+# In[84]:
 
 
-def df_info(df: pd.DataFrame, name: str='df'):
-    '''Prints columns, shape, and null value count of a dataframe'''
+def df_info(df: pd.DataFrame, name: str='df', dup_rows: bool=True, missing_values: bool=True):
+    '''Prints columns, shape, duplicate count, and null value count of a dataframe'''
     print(
-    f'{name}:\n\t\
-    Columns: {list(df.columns)}\n\t\
-    Shape: {df.shape}\n\t\
-    Duplicate rows: {df.duplicated().sum()}\n\t\
-    Missing values: {df.isna().sum().sum()}'
+    f'{name}:\n',
+    f'\tColumns: {list(df.columns)}\n',
+    f'\tShape: {df.shape}\n',
+    f'\tDuplicate rows: {df.duplicated().sum()}\n' if dup_rows else '',
+    f'\tMissing values: {df.isna().sum().sum()}' if missing_values else ''
     )
 
 
@@ -188,7 +189,7 @@ def df_info(df: pd.DataFrame, name: str='df'):
 # The names of the 'date' columns in each of the .csv files have already been identified using the [Fitabase description of the dataset](https://www.fitabase.com/media/1930/fitabasedatadictionary102320.pdf) in order to save time when changing the datatype of the 'date' columns from 'object' to 'datetime64[ns]'. 
 # ```
 
-# In[90]:
+# In[152]:
 
 
 original_day_activity = pd.read_csv(
@@ -196,14 +197,14 @@ original_day_activity = pd.read_csv(
     parse_dates=['ActivityDate'], infer_datetime_format=True
 )
 df_day_activity = original_day_activity.copy()
-df_info(df=df_day_activity, name='daily activity')
+df_info(df=df_day_activity, name='df_day_activity')
 
 
 # __TODO:__ 
 # * make cells with wide dataframes wide on website
 # * drop unnecessary columns when creating df
 
-# In[82]:
+# In[86]:
 
 
 df_day_activity.head(3)
@@ -211,7 +212,7 @@ df_day_activity.head(3)
 
 # We can then do the same with the hourly steps data:
 
-# In[66]:
+# In[87]:
 
 
 original_hour_steps = pd.read_csv(
@@ -219,10 +220,10 @@ original_hour_steps = pd.read_csv(
     parse_dates=['ActivityHour'], infer_datetime_format=True
 )
 df_hour_steps = original_hour_steps.copy()
-df_info(df=df_hour_steps, name='hourly steps')
+df_info(df=df_hour_steps, name='df_hour_steps')
 
 
-# In[67]:
+# In[88]:
 
 
 df_hour_steps.head(3)
@@ -230,7 +231,7 @@ df_hour_steps.head(3)
 
 # And the hourly calories burned data:
 
-# In[68]:
+# In[89]:
 
 
 original_hour_calories = pd.read_csv(
@@ -238,10 +239,10 @@ original_hour_calories = pd.read_csv(
     parse_dates=['ActivityHour'], infer_datetime_format=True
 )
 df_hour_calories = original_hour_calories.copy()
-df_info(df=df_hour_calories, name='hourly calories')
+df_info(df=df_hour_calories, name='df_hour_calories')
 
 
-# In[69]:
+# In[90]:
 
 
 df_hour_calories.head(3)
@@ -249,7 +250,7 @@ df_hour_calories.head(3)
 
 # Then the daily sleep data:
 
-# In[74]:
+# In[91]:
 
 
 original_day_sleep = pd.read_csv(
@@ -257,7 +258,7 @@ original_day_sleep = pd.read_csv(
     parse_dates=['SleepDay'], infer_datetime_format=True
 )
 df_day_sleep = original_day_sleep.copy()
-df_info(df=df_day_sleep, name='daily sleep')
+df_info(df=df_day_sleep, name='df_day_sleep')
 
 
 # ```{admonition} Duplicate Data Warning:
@@ -265,7 +266,7 @@ df_info(df=df_day_sleep, name='daily sleep')
 # Unlike with the other datafrarmes, we can see that there's actually 3 duplicate rows in the daily sleep data that we will take care of later. 
 # ```
 
-# In[73]:
+# In[92]:
 
 
 df_day_sleep.head(3)
@@ -273,7 +274,7 @@ df_day_sleep.head(3)
 
 # And finally, the minute sleep data:
 
-# In[100]:
+# In[93]:
 
 
 original_min_sleep = pd.read_csv(
@@ -281,7 +282,7 @@ original_min_sleep = pd.read_csv(
     parse_dates=['date'], infer_datetime_format=False
 )
 df_min_sleep = original_min_sleep.copy()
-df_info(df=df_min_sleep, name='minute sleep')
+df_info(df=df_min_sleep, name='df_min_sleep')
 
 
 # ```{admonition} Duplicate Data Warning:
@@ -289,7 +290,7 @@ df_info(df=df_min_sleep, name='minute sleep')
 # In the minute sleep data, we can see that there's 543 duplicate rows that we need to take care of as part of data cleaning. 
 # ```
 
-# In[101]:
+# In[94]:
 
 
 df_min_sleep.head(3)
@@ -299,25 +300,25 @@ df_min_sleep.head(3)
 # 
 # The first thing we should do as part of the data cleaning process is take care of the duplicate rows that we identified earlier in the ```df_day_sleep``` and ```df_min_sleep``` dataframes. 
 
-# In[78]:
+# In[95]:
 
 
-df_info(df=df_day_sleep, name='daily sleep')
-df_info(df=df_min_sleep, name='minute sleep')
+df_info(df=df_day_sleep, name='df_day_sleep')
+df_info(df=df_min_sleep, name='df_min_sleep')
 
 
-# In[79]:
+# In[96]:
 
 
 df_day_sleep.drop_duplicates(keep='first', inplace=True)
-df_info(df=df_day_sleep, name='daily sleep')
+df_info(df=df_day_sleep, name='df_day_sleep')
 
 
-# In[80]:
+# In[97]:
 
 
 df_min_sleep.drop_duplicates(keep='first', inplace=True)
-df_info(df=df_min_sleep, name='minute sleep')
+df_info(df=df_min_sleep, name='df_min_sleep')
 
 
 # And with that, we have made sure that there are no duplicate rows or null values in any of the dataframes.  
@@ -333,80 +334,396 @@ df_info(df=df_min_sleep, name='minute sleep')
 # 
 # Now we can go on to eliminate columns that are unnecessary for our analysis, and rename columns as needed. 
 
-# In[91]:
+# In[153]:
 
 
-df_info(df=df_day_activity, name='daily activity')
+df_info(df=df_day_activity, name='df_day_activity', dup_rows=False, missing_values=False)
 
 
-# In[92]:
+# In[159]:
+
+
+columns_df_da = list(df_day_activity.columns.values)[4:-1]
+
+
+# In[160]:
 
 
 df_day_activity = df_day_activity.rename(columns={'ActivityDate': 'date', 'Id': 'id'})\
-                                 .drop(columns=['TrackerDistance', 'LoggedActivitiesDistance'])
-df_info(df=df_day_activity, name='daily activity')
+                                 .drop(columns=columns_df_da)
+df_info(df=df_day_activity, name='df_day_activity', dup_rows=False, missing_values=False)
 
 
-# In[93]:
+# <br>
+# <br>
+
+# In[100]:
 
 
-df_info(df_hour_steps, name='hourly steps')
+df_info(df_hour_steps, name='df_hour_steps', dup_rows=False, missing_values=False)
 
 
-# In[94]:
+# In[101]:
 
 
 df_hour_steps = df_hour_steps.rename(columns={'Id': 'id', 'ActivityHour': 'date_time'})
-df_info(df_hour_steps, name='hourly steps')
+df_info(df_hour_steps, name='df_hour_steps', dup_rows=False, missing_values=False)
 
 
-# In[95]:
-
-
-df_info(df_hour_calories, name='hourly calories')
-
-
-# In[96]:
-
-
-df_hour_calories = df_hour_calories.rename(columns={'Id': 'id', 'ActivityHour': 'date_time'})
-df_info(df_hour_calories, name='hourly calories')
-
-
-# In[97]:
-
-
-df_info(df_day_sleep, name='daily sleep')
-
-
-# In[98]:
-
-
-df_day_sleep = df_day_sleep.rename(columns={'Id': 'id', 'SleepDay': 'date'})
-df_info(df_day_sleep, name='daily sleep')
-
-
-# In[99]:
-
-
-df_info(df_min_sleep, name='minute sleep')
-
+# <br>
+# <br>
 
 # In[102]:
 
 
+df_info(df_hour_calories, name='df_hour_calories', dup_rows=False, missing_values=False)
+
+
+# In[103]:
+
+
+df_hour_calories = df_hour_calories.rename(columns={'Id': 'id', 'ActivityHour': 'date_time'})
+df_info(df_hour_calories, name='df_hour_calories', dup_rows=False, missing_values=False)
+
+
+# <br>
+# <br>
+
+# In[104]:
+
+
+df_info(df_day_sleep, name='df_day_sleep', dup_rows=False, missing_values=False)
+
+
+# In[105]:
+
+
+df_day_sleep = df_day_sleep.rename(columns={'Id': 'id', 'SleepDay': 'date'})
+df_info(df_day_sleep, name='df_day_sleep', dup_rows=False, missing_values=False)
+
+
+# <br>
+# <br>
+
+# In[106]:
+
+
+df_info(df_min_sleep, name='df_min_sleep', dup_rows=False, missing_values=False)
+
+
+# In[107]:
+
+
 df_min_sleep = df_min_sleep.rename(columns={'Id': 'id', 'date': 'date_time'})\
                            .drop(columns='logId')
-df_info(df_min_sleep, name='minute sleep')
+df_info(df_min_sleep, name='df_min_sleep', dup_rows=False, missing_values=False)
 
 
 # ### 4.3 Merging Data
-# text
+# 
+# Now that the data is clean, we can merge some of the dataframes together.  
+# ````{margin}
+# ```{tip}
+# An inner join is used in this case because we only want to keep the rows that are common between the merged dataframes. Using 'id' and a 'date' column as the primary key can ensure that corresponding rows get matched correctly. 
+# ```
+# ````
+# We can merge the ```df_day_activity``` and ```df_day_sleep``` dataframes together to create a new dataframe called ```df_day_activity_sleep``` since their date columns are both 'date' instead of including a time element as well.  
+# 
+# Similarly, we can combine the ```df_hour_steps``` and ```df_hour_calories``` dataframes to create a new dataframe called ```df_hour_steps_calories``` since their date columns include a time element.  
+# 
+# Since no dataframe outside of ```df_min_sleep``` is on a minute-by-minute basis, we cannot combine the dataframe with the other dataframes.  
+# 
+# Doing inner joins with the ```id``` and either ```date``` or ```date_time``` columns as the primary key will allow us to join the dataframes together without losing any of the data and without creating extraneous columns or rows.  
+# 
+# Starting off with the  ```df_day_activity``` and ```df_day_sleep``` dataframes to make ```df_day_activity_sleep```:
+
+# In[161]:
+
+
+df_day_activity_sleep = df_day_sleep.merge(right=df_day_activity, on=['id', 'date'], 
+                                           how='inner', validate='1:1')
+df_info(df_day_activity_sleep, name='df_day_activity_sleep')
+
+
+# In[162]:
+
+
+df_day_activity_sleep.head(3)
+
+
+# And then combining the ```df_hour_steps``` and ```df_hour_calories``` dataframes to make ```df_hour_steps_calories```:
+
+# In[116]:
+
+
+df_hour_steps_calories = df_hour_steps.merge(right=df_hour_calories, on=['id', 'date_time'],
+                                             how='inner', validate='1:1')
+df_info(df_hour_steps_calories, name='df_hour_steps_calories')
+
+
+# In[118]:
+
+
+df_hour_steps_calories.head(3)
+
+
+# And our final dataframe, ```df_min_sleep```:
+
+# In[119]:
+
+
+df_min_sleep.head(3)
+
+
+# ### 4.4 Adding Relevant Columns
+# 
+# For our now 3 dataframes, we can add a `day_of_week` column that will be used to identify the day of the week for each date. This may make it easier to visualize the data later on. 
+
+# In[137]:
+
+
+df_day_activity_sleep['day_of_week'] = df_day_activity_sleep['date'].dt.day_name()
+df_hour_steps_calories['day_of_week'] = df_hour_steps_calories['date_time'].dt.day_name()
+df_min_sleep['day_of_week'] = df_min_sleep['date_time'].dt.day_name()
+
+
+# Then we can move the ```day_of_week``` column toward the front of the dataframe:
+
+# In[138]:
+
+
+day_of_week = df_day_activity_sleep['day_of_week']
+df_day_activity_sleep.drop(columns='day_of_week', inplace=True)
+df_day_activity_sleep.insert(loc=2, column='day_of_week', value=day_of_week)
+
+day_of_week = df_hour_steps_calories['day_of_week']
+df_hour_steps_calories.drop(columns='day_of_week', inplace=True)
+df_hour_steps_calories.insert(loc=2, column='day_of_week', value=day_of_week)
+
+day_of_week = df_hour_steps_calories['day_of_week']
+df_min_sleep.drop(columns='day_of_week', inplace=True)
+df_min_sleep.insert(loc=2, column='day_of_week', value=day_of_week)
+
+
+# And taking a final quick look at the dataframes before analysis:
+
+# In[165]:
+
+
+df_day_activity_sleep.head(3)
+
+
+# In[140]:
+
+
+df_hour_steps_calories.head(3)
+
+
+# In[141]:
+
+
+df_min_sleep.head(3)
+
 
 # ---
 
 # ## 5. Analyze and Share Phase
 # <!-- <a name='Analyze-and-Share-Phase'></a><h3 style="color:#FA8072">5. Analyze and Share Phase:</h3> -->
+
+# With our data clean and processed, we can now begin to analyze the data to see how we can influence and improve Bellabeat's marketing decisions. 
+# 
+# ### 5.1 Activity Level Distribution
+# First off, we can classify the individuals in the ```df_day_activity_sleep``` dataframe into 4 activity levels as adjusted from [10000steps.org.au](https://www.10000steps.org.au/articles/counting-steps/):
+# 
+# With this information, Bellabeat will be able to get an understanding of the demographics of users who use smart fitness devices like the FitBit, and an idea of what types of individuals they should focus their marketing efforts towards. 
+# 
+# * Sedentary: < 5,000 steps per day
+# * Lightly Active: 5,000 - 7,499 steps per day
+# * Fairly Active: 7,500 - 9,999 steps per day
+# * Very Active: more than 10,000 steps per day
+# 
+# ```{note}
+# [10000steps.org.au](https://www.10000steps.org.au/articles/counting-steps/) recommends that most adults take 10,000 steps daily as studies have shown that this level of activity leads to weight loss, better glucose tolerance, and reduced blood pressure. 
+# ```
+# 
+# To do this, we can first find the average steps taken per day for each of the individuals in the ```df_day_activity_sleep``` dataframe.  
+# In order to still be able to refer to ```df_day_activity_sleep``` afterwards, we can create a new dataframe called ```df_avg_actslp``` that will be grouped by ```id``` and then the columns will be averaged. 
+
+# In[168]:
+
+
+df_avg_actslp = df_day_activity_sleep.copy().groupby(by='id').mean().reset_index()
+
+
+# In[169]:
+
+
+df_avg_actslp.head(3)
+
+
+# Now that we have the average steps taken per day for each individual, we can classify each of them into the 4 activity levels. 
+
+# In[171]:
+
+
+conditions = [df_avg_actslp.TotalSteps < 5000, 
+              (df_avg_actslp.TotalSteps >= 5000) & (df_avg_actslp.TotalSteps < 7499),
+              (df_avg_actslp.TotalSteps >= 7500) & (df_avg_actslp.TotalSteps < 9999),
+              (df_avg_actslp.TotalSteps >= 10_000)
+             ]
+choices = ['sedentary', 'lightly active', 'moderately active', 'very active']
+
+df_avg_actslp['activity_level'] = np.select(conditions, choices, default=np.nan)
+
+
+# In[176]:
+
+
+df_avg_actslp.head(3)
+
+
+# We should also make sure that this worked for all of the rows, and there weren't any null values added to the dataframe. 
+
+# In[173]:
+
+
+df_info(df_avg_actslp, name='df_avg_actslp')
+
+
+# Now we can create a new dataframe called ```df_pct_actlvl``` for 'df_percent_activity_level' that will be grouped by ```activity_level``` with the percent of individuals in each activity level.
+
+# In[280]:
+
+
+df_pct_actlvl = df_avg_actslp.activity_level.value_counts(normalize=True).reset_index()
+
+
+# In[281]:
+
+
+df_pct_actlvl.rename(columns={'index': 'activity_level', 'activity_level': 'percentage'}, inplace=True)
+df_pct_actlvl.percentage *= 100
+
+
+# In[282]:
+
+
+df_pct_actlvl.head(3)
+
+
+# With this dataframe, we can plot the percentages of individuals in each activity level:
+
+# In[309]:
+
+
+fig, ax = plt.subplots(figsize=(12,12), facecolor='w')
+plt.rcParams.update({'font.size': 20})
+labels = ['Sedentary', 'Lightly Active', 'Moderately Active', 'Very Active']
+
+plt.pie(
+        df_pct_actlvl.percentage, labels=labels,  startangle=113,
+        autopct='%1.1f%%', pctdistance=0.85, colors=plt.cm.Reds_r(np.arange(75, 226, 50)), 
+        wedgeprops={'linewidth': 8, 'edgecolor': 'white'}
+        )
+ax.add_artist(plt.Circle((0,0), 0.7, color='white'))
+
+fig.suptitle('Percentage of Users \nin Each Activity Level', 
+             x=0.505, y=0.5, fontsize=26, ha='center', va='center')
+
+plt.show()
+
+
+# Somewhat surprisingly, the the largest activity level group among the FitBit users is actually the 'Sedentary' group. This may be surprising, considering that you might expect that only active individuals would seek out a health and fitness-focused smart device. Understanding this, Bellabeat should shift their marketing strategy to advertise towards not only active individuals, but also those who are sedentary. Beyond that, we can see that only a minority of the users reached the 'Very Active' level of 10,000 steps or more per day. This is considered unhealthy for most people, and Bellabeat could also market that their membership service will improve the health and fitness of subscribers as their activity level can be monitored and improved. 
+# 
+# 
+# ```{admonition} Key Takeaways:
+# :class: tip
+# * Bellabeat should focus their marketing not only towards active individuals, but also those who are more sedentary.
+# * Bellabeat should also market that their membership service will improve the health and fitness of subscribers as their activity level can be monitored and improved.
+# ```
+
+# ### 5.2 Weekly Trends in Steps and Sleep
+
+# We can go beyond classifying the users into activity levels and try to identify trends in both steps and sleep per day of the week.  
+# The goal behind this is that we may be able to identify two different trends in the data:
+# 1. Are users taking the recommended 10,000 steps and sleeping the recommended 8 hours per day?
+# 2. Do users display healthier habits on certain days of the week more than others?
+# 
+# With this information, Bellabeat will be able to identify if smart fitness device users are on average displaying healthy habits and provide in-app recommendations and reminders when users are not achieving healthy numbers or their personalized goals. As a result, Bellabeat will be able to identify if they should shift their marketing strategy to 
+# Bellabeat will be able to market their app and membership as being able to help users achieve their health goals by improving their fitness and sleep. 
+
+# In[314]:
+
+
+df_day_activity_sleep.groupby(by='day_of_week').mean().drop(columns='id').reset_index()
+
+
+# We can first establish a week order to be used for following plots. 
+
+# In[342]:
+
+
+WEEK_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+
+# In[451]:
+
+
+fig, ax = plt.subplots(figsize=(12, 8), facecolor='w')
+plt.rcParams.update({'font.size': 14})
+
+sns.barplot(
+            data=df_day_activity_sleep, x='day_of_week', y='TotalSteps', 
+            order=WEEK_ORDER, palette='icefire', ci=None
+            )
+plt.text(x=-0.4, y=10_100, s='recommended daily steps', 
+         color='red', ha='left')
+plt.axhline(y=10_000, color='red', linestyle='--', linewidth=2)
+
+ax.set_xlabel('Day of the Week', fontsize=16, labelpad=10)
+ax.set_ylabel('Average Steps', fontsize=16, labelpad=10)
+# ax.set_yticklabels(['{:,.0f}'.format(x) for x in ax.get_yticks()])
+ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
+ax.tick_params(axis='both', size=0)
+
+ax.grid(axis='y', linestyle='--', alpha=0.8)
+sns.despine(bottom=True, left=True)
+fig.suptitle('Average Steps by Day of the Week',
+             fontsize=20, x=0.13, y=0.95, ha='left')
+plt.show()
+
+
+# In[450]:
+
+
+fig, ax = plt.subplots(figsize=(12, 8), facecolor='w')
+plt.rcParams.update({'font.size': 14})
+
+sns.barplot(
+            data=df_day_activity_sleep, x='day_of_week', y='TotalMinutesAsleep', 
+            order=WEEK_ORDER, palette='icefire', ci=None
+            )
+plt.text(x=-0.4, y=485, s='recommended daily sleep (8 hours)', 
+         color='red', ha='left')
+plt.axhline(y=480, color='red', linestyle='--', linewidth=2)
+
+ax.set_xlabel('Day of the Week', fontsize=16, labelpad=10)
+ax.set_ylabel('Average Minutes Asleep', fontsize=16, labelpad=10)
+ax.tick_params(axis='both', size=0)
+
+ax.grid(axis='y', linestyle='--', alpha=0.8)
+sns.despine(bottom=True, left=True)
+fig.suptitle('Average Minutes Asleep by Day of the Week',
+             fontsize=20, x=0.13, y=0.95, ha='left')
+plt.show()
+
+
+# [conclusions from this figure]
+# 
+# ```{admonition} Key Takeaways:
+# :class: tip
+# [key takeaways]
+# ```
 
 # ---
 
@@ -415,62 +732,62 @@ df_info(df_min_sleep, name='minute sleep')
 
 # ---
 
-# ### Sleep Analysis
+# ### Bonus Sleep Analysis
 
-# In[19]:
-
-
-df_sleep['day_of_week'] = df_sleep['date_time'].dt.day_name()
-df_sleep['date'] = df_sleep['date_time'].dt.date
+# In[74]:
 
 
-# In[20]:
+df_min_sleep['day_of_week'] = df_min_sleep['date_time'].dt.day_name()
+df_min_sleep['date'] = df_min_sleep['date_time'].dt.date
 
 
-df_sleep.head(3)
+# In[75]:
 
 
-# In[21]:
+df_min_sleep.head(3)
 
 
-df_sleep['time_diff'] = df_sleep.groupby('id')['date_time'].diff()
+# In[76]:
 
 
-# In[22]:
+df_min_sleep['time_diff'] = df_min_sleep.groupby('id')['date_time'].diff()
 
 
-df_sleep.head(5)
+# In[77]:
 
 
-# In[23]:
+df_min_sleep.head(5)
 
 
-df_sleep.time_diff.value_counts()
+# In[78]:
 
 
-# In[24]:
+df_min_sleep.time_diff.value_counts()
 
 
-df_sleep = df_sleep[df_sleep.time_diff == np.timedelta64(1, 'm')]
+# In[79]:
 
 
-# In[25]:
+df_min_sleep = df_min_sleep[df_min_sleep.time_diff == np.timedelta64(1, 'm')]
 
 
-df_info(df_sleep, 'df_sleep')
+# In[80]:
 
 
-# In[26]:
+df_info(df_min_sleep, 'df_min_sleep')
 
 
-def plot_sleep(df_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
+# In[81]:
+
+
+def plot_sleep(df_min_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
     '''
     Plots sleep data for a given id
     
         Parameters:
-            df_sleep (pd.DataFrame): Dataframe with sleep data to plot
-            id (int):                ID of the user to be analyzed
-            repeat_ylabel (bool):    Whether to repeat y-axis label
+            df_min_sleep (pd.DataFrame): Dataframe with sleep data to plot
+            id (int):                    ID of the user to be analyzed
+            repeat_ylabel (bool):        Whether to repeat y-axis label
     '''
 
     WEEK_ORDER= ['Monday', 'Tuesday', 'Wednesday',
@@ -478,7 +795,7 @@ def plot_sleep(df_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
     SLEEP_STATE = ['Asleep', 'Restless', 'Awake in Bed']
 
     fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(22, 8), facecolor='w')
-    df_id = df_sleep.loc[df_sleep.id == id]
+    df_id = df_min_sleep.loc[df_min_sleep.id == id]
     
     for idx, ax in enumerate(axes):
 
@@ -514,21 +831,15 @@ def plot_sleep(df_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
                  fontsize=22, x=0.123, y=1.05, ha='left')
 
 
-# In[27]:
+# In[82]:
 
 
-ids = df_sleep.id.unique()
+ids = df_min_sleep.id.unique()
 len(ids)
 
 
-# In[28]:
+# In[83]:
 
 
-plot_sleep(df_sleep, id=ids[0])
-
-
-# In[ ]:
-
-
-
+plot_sleep(df_min_sleep, id=ids[0])
 
