@@ -499,6 +499,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#analyze-and-share-phase">
    5. Analyze and Share Phase
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activity-level-distribution">
+     5.1 Activity Level Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weekly-trends-in-steps-and-sleep">
+     5.2 Weekly Trends in Steps and Sleep
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#act-phase">
@@ -606,6 +618,18 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#analyze-and-share-phase">
    5. Analyze and Share Phase
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activity-level-distribution">
+     5.1 Activity Level Distribution
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weekly-trends-in-steps-and-sleep">
+     5.2 Weekly Trends in Steps and Sleep
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#act-phase">
@@ -840,6 +864,7 @@ use these conclusions to advertise how bellabeat membership and usage can lead t
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -913,7 +938,7 @@ But first, we can create a simple function that will return important informatio
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>daily activity:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_day_activity:
  	Columns: [&#39;Id&#39;, &#39;ActivityDate&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;TrackerDistance&#39;, &#39;LoggedActivitiesDistance&#39;, &#39;VeryActiveDistance&#39;, &#39;ModeratelyActiveDistance&#39;, &#39;LightActiveDistance&#39;, &#39;SedentaryActiveDistance&#39;, &#39;VeryActiveMinutes&#39;, &#39;FairlyActiveMinutes&#39;, &#39;LightlyActiveMinutes&#39;, &#39;SedentaryMinutes&#39;, &#39;Calories&#39;]
  	Shape: (940, 15)
  	Duplicate rows: 0
@@ -1429,7 +1454,7 @@ Furthermore, we know that the data types of the columns are correct, as we have 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>daily activity:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_day_activity:
  	Columns: [&#39;Id&#39;, &#39;ActivityDate&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;TrackerDistance&#39;, &#39;LoggedActivitiesDistance&#39;, &#39;VeryActiveDistance&#39;, &#39;ModeratelyActiveDistance&#39;, &#39;LightActiveDistance&#39;, &#39;SedentaryActiveDistance&#39;, &#39;VeryActiveMinutes&#39;, &#39;FairlyActiveMinutes&#39;, &#39;LightlyActiveMinutes&#39;, &#39;SedentaryMinutes&#39;, &#39;Calories&#39;]
  	Shape: (940, 15)
   
@@ -1439,16 +1464,23 @@ Furthermore, we know that the data types of the columns are correct, as we have 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns_df_da</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_day_activity</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_day_activity</span> <span class="o">=</span> <span class="n">df_day_activity</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ActivityDate&#39;</span><span class="p">:</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;Id&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">})</span>\
-                                 <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;TrackerDistance&#39;</span><span class="p">,</span> <span class="s1">&#39;LoggedActivitiesDistance&#39;</span><span class="p">])</span>
+                                 <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns_df_da</span><span class="p">)</span>
 <span class="n">df_info</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_day_activity</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;df_day_activity&#39;</span><span class="p">,</span> <span class="n">dup_rows</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">missing_values</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>daily activity:
- 	Columns: [&#39;id&#39;, &#39;date&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;VeryActiveDistance&#39;, &#39;ModeratelyActiveDistance&#39;, &#39;LightActiveDistance&#39;, &#39;SedentaryActiveDistance&#39;, &#39;VeryActiveMinutes&#39;, &#39;FairlyActiveMinutes&#39;, &#39;LightlyActiveMinutes&#39;, &#39;SedentaryMinutes&#39;, &#39;Calories&#39;]
- 	Shape: (940, 13)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_day_activity:
+ 	Columns: [&#39;id&#39;, &#39;date&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;Calories&#39;]
+ 	Shape: (940, 5)
   
 </pre></div>
 </div>
@@ -1609,8 +1641,8 @@ Furthermore, we know that the data types of the columns are correct, as we have 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_day_activity_sleep:
- 	Columns: [&#39;id&#39;, &#39;date&#39;, &#39;TotalSleepRecords&#39;, &#39;TotalMinutesAsleep&#39;, &#39;TotalTimeInBed&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;VeryActiveDistance&#39;, &#39;ModeratelyActiveDistance&#39;, &#39;LightActiveDistance&#39;, &#39;SedentaryActiveDistance&#39;, &#39;VeryActiveMinutes&#39;, &#39;FairlyActiveMinutes&#39;, &#39;LightlyActiveMinutes&#39;, &#39;SedentaryMinutes&#39;, &#39;Calories&#39;]
- 	Shape: (410, 16)
+ 	Columns: [&#39;id&#39;, &#39;date&#39;, &#39;TotalSleepRecords&#39;, &#39;TotalMinutesAsleep&#39;, &#39;TotalTimeInBed&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;Calories&#39;]
+ 	Shape: (410, 8)
  	Duplicate rows: 0
  	Missing values: 0
 </pre></div>
@@ -1649,14 +1681,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <th>TotalTimeInBed</th>
       <th>TotalSteps</th>
       <th>TotalDistance</th>
-      <th>VeryActiveDistance</th>
-      <th>ModeratelyActiveDistance</th>
-      <th>LightActiveDistance</th>
-      <th>SedentaryActiveDistance</th>
-      <th>VeryActiveMinutes</th>
-      <th>FairlyActiveMinutes</th>
-      <th>LightlyActiveMinutes</th>
-      <th>SedentaryMinutes</th>
       <th>Calories</th>
     </tr>
   </thead>
@@ -1670,14 +1694,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <td>346</td>
       <td>13162</td>
       <td>8.50</td>
-      <td>1.88</td>
-      <td>0.55</td>
-      <td>6.06</td>
-      <td>0.0</td>
-      <td>25</td>
-      <td>13</td>
-      <td>328</td>
-      <td>728</td>
       <td>1985</td>
     </tr>
     <tr>
@@ -1689,14 +1705,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <td>407</td>
       <td>10735</td>
       <td>6.97</td>
-      <td>1.57</td>
-      <td>0.69</td>
-      <td>4.71</td>
-      <td>0.0</td>
-      <td>21</td>
-      <td>19</td>
-      <td>217</td>
-      <td>776</td>
       <td>1797</td>
     </tr>
     <tr>
@@ -1708,14 +1716,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <td>442</td>
       <td>9762</td>
       <td>6.28</td>
-      <td>2.14</td>
-      <td>1.26</td>
-      <td>2.83</td>
-      <td>0.0</td>
-      <td>29</td>
-      <td>34</td>
-      <td>209</td>
-      <td>726</td>
       <td>1745</td>
     </tr>
   </tbody>
@@ -1917,14 +1917,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <th>TotalTimeInBed</th>
       <th>TotalSteps</th>
       <th>TotalDistance</th>
-      <th>VeryActiveDistance</th>
-      <th>ModeratelyActiveDistance</th>
-      <th>LightActiveDistance</th>
-      <th>SedentaryActiveDistance</th>
-      <th>VeryActiveMinutes</th>
-      <th>FairlyActiveMinutes</th>
-      <th>LightlyActiveMinutes</th>
-      <th>SedentaryMinutes</th>
       <th>Calories</th>
     </tr>
   </thead>
@@ -1939,14 +1931,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <td>346</td>
       <td>13162</td>
       <td>8.50</td>
-      <td>1.88</td>
-      <td>0.55</td>
-      <td>6.06</td>
-      <td>0.0</td>
-      <td>25</td>
-      <td>13</td>
-      <td>328</td>
-      <td>728</td>
       <td>1985</td>
     </tr>
     <tr>
@@ -1959,14 +1943,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <td>407</td>
       <td>10735</td>
       <td>6.97</td>
-      <td>1.57</td>
-      <td>0.69</td>
-      <td>4.71</td>
-      <td>0.0</td>
-      <td>21</td>
-      <td>19</td>
-      <td>217</td>
-      <td>776</td>
       <td>1797</td>
     </tr>
     <tr>
@@ -1979,14 +1955,6 @@ Furthermore, we know that the data types of the columns are correct, as we have 
       <td>442</td>
       <td>9762</td>
       <td>6.28</td>
-      <td>2.14</td>
-      <td>1.26</td>
-      <td>2.83</td>
-      <td>0.0</td>
-      <td>29</td>
-      <td>34</td>
-      <td>209</td>
-      <td>726</td>
       <td>1745</td>
     </tr>
   </tbody>
@@ -2116,7 +2084,497 @@ Furthermore, we know that the data types of the columns are correct, as we have 
 <hr class="docutils" />
 <section id="analyze-and-share-phase">
 <h2>5. Analyze and Share Phase<a class="headerlink" href="#analyze-and-share-phase" title="Permalink to this headline">#</a></h2>
-<!-- <a name='Analyze-and-Share-Phase'></a><h3 style="color:#FA8072">5. Analyze and Share Phase:</h3> --></section>
+<!-- <a name='Analyze-and-Share-Phase'></a><h3 style="color:#FA8072">5. Analyze and Share Phase:</h3> --><p>With our data clean and processed, we can now begin to analyze the data to see how we can influence and improve Bellabeat’s marketing decisions.</p>
+<section id="activity-level-distribution">
+<h3>5.1 Activity Level Distribution<a class="headerlink" href="#activity-level-distribution" title="Permalink to this headline">#</a></h3>
+<p>First off, we can classify the individuals in the <code class="docutils literal notranslate"><span class="pre">df_day_activity_sleep</span></code> dataframe into 4 activity levels as adjusted from <a class="reference external" href="https://www.10000steps.org.au/articles/counting-steps/">10000steps.org.au</a>:</p>
+<p>With this information, Bellabeat will be able to get an understanding of the demographics of users who use smart fitness devices like the FitBit, and an idea of what types of individuals they should focus their marketing efforts towards.</p>
+<ul class="simple">
+<li><p>Sedentary: &lt; 5,000 steps per day</p></li>
+<li><p>Lightly Active: 5,000 - 7,499 steps per day</p></li>
+<li><p>Fairly Active: 7,500 - 9,999 steps per day</p></li>
+<li><p>Very Active: more than 10,000 steps per day</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://www.10000steps.org.au/articles/counting-steps/">10000steps.org.au</a> recommends that most adults take 10,000 steps daily as studies have shown that this level of activity leads to weight loss, better glucose tolerance, and reduced blood pressure.</p>
+</div>
+<p>To do this, we can first find the average steps taken per day for each of the individuals in the <code class="docutils literal notranslate"><span class="pre">df_day_activity_sleep</span></code> dataframe.<br />
+In order to still be able to refer to <code class="docutils literal notranslate"><span class="pre">df_day_activity_sleep</span></code> afterwards, we can create a new dataframe called <code class="docutils literal notranslate"><span class="pre">df_avg_actslp</span></code> that will be grouped by <code class="docutils literal notranslate"><span class="pre">id</span></code> and then the columns will be averaged.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_avg_actslp</span> <span class="o">=</span> <span class="n">df_day_activity_sleep</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>TotalSleepRecords</th>
+      <th>TotalMinutesAsleep</th>
+      <th>TotalTimeInBed</th>
+      <th>TotalSteps</th>
+      <th>TotalDistance</th>
+      <th>Calories</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1503960366</td>
+      <td>1.08</td>
+      <td>360.28</td>
+      <td>383.2</td>
+      <td>12405.68</td>
+      <td>7.971200</td>
+      <td>1872.280000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1644430081</td>
+      <td>1.00</td>
+      <td>294.00</td>
+      <td>346.0</td>
+      <td>7967.75</td>
+      <td>5.792500</td>
+      <td>2977.750000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1844505072</td>
+      <td>1.00</td>
+      <td>652.00</td>
+      <td>961.0</td>
+      <td>3477.00</td>
+      <td>2.303333</td>
+      <td>1676.333333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now that we have the average steps taken per day for each individual, we can classify each of them into the 4 activity levels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">TotalSteps</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">,</span> 
+              <span class="p">(</span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">TotalSteps</span> <span class="o">&gt;=</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">TotalSteps</span> <span class="o">&lt;</span> <span class="mi">7499</span><span class="p">),</span>
+              <span class="p">(</span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">TotalSteps</span> <span class="o">&gt;=</span> <span class="mi">7500</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">TotalSteps</span> <span class="o">&lt;</span> <span class="mi">9999</span><span class="p">),</span>
+              <span class="p">(</span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">TotalSteps</span> <span class="o">&gt;=</span> <span class="mi">10_000</span><span class="p">)</span>
+             <span class="p">]</span>
+<span class="n">choices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sedentary&#39;</span><span class="p">,</span> <span class="s1">&#39;lightly active&#39;</span><span class="p">,</span> <span class="s1">&#39;moderately active&#39;</span><span class="p">,</span> <span class="s1">&#39;very active&#39;</span><span class="p">]</span>
+
+<span class="n">df_avg_actslp</span><span class="p">[</span><span class="s1">&#39;activity_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">choices</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>TotalSleepRecords</th>
+      <th>TotalMinutesAsleep</th>
+      <th>TotalTimeInBed</th>
+      <th>TotalSteps</th>
+      <th>TotalDistance</th>
+      <th>Calories</th>
+      <th>activity_level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1503960366</td>
+      <td>1.08</td>
+      <td>360.28</td>
+      <td>383.2</td>
+      <td>12405.68</td>
+      <td>7.971200</td>
+      <td>1872.280000</td>
+      <td>very active</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1644430081</td>
+      <td>1.00</td>
+      <td>294.00</td>
+      <td>346.0</td>
+      <td>7967.75</td>
+      <td>5.792500</td>
+      <td>2977.750000</td>
+      <td>moderately active</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1844505072</td>
+      <td>1.00</td>
+      <td>652.00</td>
+      <td>961.0</td>
+      <td>3477.00</td>
+      <td>2.303333</td>
+      <td>1676.333333</td>
+      <td>sedentary</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We should also make sure that this worked for all of the rows, and there weren’t any null values added to the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_info</span><span class="p">(</span><span class="n">df_avg_actslp</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;df_avg_actslp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>df_avg_actslp:
+ 	Columns: [&#39;id&#39;, &#39;TotalSleepRecords&#39;, &#39;TotalMinutesAsleep&#39;, &#39;TotalTimeInBed&#39;, &#39;TotalSteps&#39;, &#39;TotalDistance&#39;, &#39;Calories&#39;, &#39;activity_level&#39;]
+ 	Shape: (24, 8)
+ 	Duplicate rows: 0
+ 	Missing values: 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can create a new dataframe called <code class="docutils literal notranslate"><span class="pre">df_pct_actlvl</span></code> for ‘df_percent_activity_level’ that will be grouped by <code class="docutils literal notranslate"><span class="pre">activity_level</span></code> with the percent of individuals in each activity level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pct_actlvl</span> <span class="o">=</span> <span class="n">df_avg_actslp</span><span class="o">.</span><span class="n">activity_level</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pct_actlvl</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;activity_level&#39;</span><span class="p">,</span> <span class="s1">&#39;activity_level&#39;</span><span class="p">:</span> <span class="s1">&#39;percentage&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_pct_actlvl</span><span class="o">.</span><span class="n">percentage</span> <span class="o">*=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pct_actlvl</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>activity_level</th>
+      <th>percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>moderately active</td>
+      <td>37.500000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>very active</td>
+      <td>20.833333</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sedentary</td>
+      <td>20.833333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>With this dataframe, we can plot the percentages of individuals in each activity level:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">})</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sedentary&#39;</span><span class="p">,</span> <span class="s1">&#39;Lightly Active&#39;</span><span class="p">,</span> <span class="s1">&#39;Moderately Active&#39;</span><span class="p">,</span> <span class="s1">&#39;Very Active&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span>
+        <span class="n">df_pct_actlvl</span><span class="o">.</span><span class="n">percentage</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>  <span class="n">startangle</span><span class="o">=</span><span class="mi">113</span><span class="p">,</span>
+        <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">pctdistance</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds_r</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">226</span><span class="p">,</span> <span class="mi">50</span><span class="p">)),</span> 
+        <span class="n">wedgeprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;linewidth&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">}</span>
+        <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Percentage of Users </span><span class="se">\n</span><span class="s1">in Each Activity Level&#39;</span><span class="p">,</span> 
+             <span class="n">x</span><span class="o">=</span><span class="mf">0.505</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bellabeat_analysis_92_0.png" src="../_images/bellabeat_analysis_92_0.png" />
+</div>
+</div>
+<p>Somewhat surprisingly, the the largest activity level group among the FitBit users is actually the ‘Sedentary’ group. This may be surprising, considering that you might expect that only active individuals would seek out a health and fitness-focused smart device. Understanding this, Bellabeat should shift their marketing strategy to advertise towards not only active individuals, but also those who are sedentary. Beyond that, we can see that only a minority of the users reached the ‘Very Active’ level of 10,000 steps or more per day. This is considered unhealthy for most people, and Bellabeat could also market that their membership service will improve the health and fitness of subscribers as their activity level can be monitored and improved.</p>
+<div class="tip admonition">
+<p class="admonition-title">Key Takeaways:</p>
+<ul class="simple">
+<li><p>Bellabeat should focus their marketing not only towards active individuals, but also those who are more sedentary.</p></li>
+<li><p>Bellabeat should also market that their membership service will improve the health and fitness of subscribers as their activity level can be monitored and improved.</p></li>
+</ul>
+</div>
+</section>
+<section id="weekly-trends-in-steps-and-sleep">
+<h3>5.2 Weekly Trends in Steps and Sleep<a class="headerlink" href="#weekly-trends-in-steps-and-sleep" title="Permalink to this headline">#</a></h3>
+<p>We can go beyond classifying the users into activity levels and try to identify trends in both steps and sleep per day of the week.<br />
+The goal behind this is that we may be able to identify two different trends in the data:</p>
+<ol class="simple">
+<li><p>Are users taking the recommended 10,000 steps and sleeping the recommended 8 hours per day?</p></li>
+<li><p>Do users display healthier habits on certain days of the week more than others?</p></li>
+</ol>
+<p>With this information, Bellabeat will be able to identify if smart fitness device users are on average displaying healthy habits and provide in-app recommendations and reminders when users are not achieving healthy numbers or their personalized goals. As a result, Bellabeat will be able to identify if they should shift their marketing strategy to
+Bellabeat will be able to market their app and membership as being able to help users achieve their health goals by improving their fitness and sleep.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_day_activity_sleep</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day_of_week</th>
+      <th>TotalSleepRecords</th>
+      <th>TotalMinutesAsleep</th>
+      <th>TotalTimeInBed</th>
+      <th>TotalSteps</th>
+      <th>TotalDistance</th>
+      <th>Calories</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Friday</td>
+      <td>1.070175</td>
+      <td>405.421053</td>
+      <td>445.052632</td>
+      <td>7901.403509</td>
+      <td>5.511930</td>
+      <td>2329.649123</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Monday</td>
+      <td>1.108696</td>
+      <td>419.500000</td>
+      <td>457.347826</td>
+      <td>9273.217391</td>
+      <td>6.540870</td>
+      <td>2431.978261</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Saturday</td>
+      <td>1.192982</td>
+      <td>419.070175</td>
+      <td>459.842105</td>
+      <td>9871.122807</td>
+      <td>7.015789</td>
+      <td>2506.894737</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sunday</td>
+      <td>1.181818</td>
+      <td>452.745455</td>
+      <td>503.509091</td>
+      <td>7297.854545</td>
+      <td>5.184727</td>
+      <td>2276.600000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Thursday</td>
+      <td>1.031250</td>
+      <td>401.296875</td>
+      <td>434.875000</td>
+      <td>8183.515625</td>
+      <td>5.773438</td>
+      <td>2306.671875</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Tuesday</td>
+      <td>1.107692</td>
+      <td>404.538462</td>
+      <td>443.292308</td>
+      <td>9182.692308</td>
+      <td>6.430000</td>
+      <td>2496.200000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Wednesday</td>
+      <td>1.151515</td>
+      <td>434.681818</td>
+      <td>470.030303</td>
+      <td>8022.863636</td>
+      <td>5.719849</td>
+      <td>2378.242424</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can first establish a week order to be used for following plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">WEEK_ORDER</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Saturday&#39;</span><span class="p">,</span> <span class="s1">&#39;Sunday&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">df_day_activity_sleep</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;TotalSteps&#39;</span><span class="p">,</span> 
+            <span class="n">order</span><span class="o">=</span><span class="n">WEEK_ORDER</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;icefire&#39;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10_100</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;recommended daily steps&#39;</span><span class="p">,</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">10_000</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Day of the Week&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Average Steps&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># ax.set_yticklabels([&#39;{:,.0f}&#39;.format(x) for x in ax.get_yticks()])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">StrMethodFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{x:,.0f}</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Average Steps by Day of the Week&#39;</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.13</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bellabeat_analysis_99_0.png" src="../_images/bellabeat_analysis_99_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">df_day_activity_sleep</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;TotalMinutesAsleep&#39;</span><span class="p">,</span> 
+            <span class="n">order</span><span class="o">=</span><span class="n">WEEK_ORDER</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;icefire&#39;</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">485</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;recommended daily sleep (8 hours)&#39;</span><span class="p">,</span> 
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Day of the Week&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Average Minutes Asleep&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Average Minutes Asleep by Day of the Week&#39;</span><span class="p">,</span>
+             <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.13</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bellabeat_analysis_100_0.png" src="../_images/bellabeat_analysis_100_0.png" />
+</div>
+</div>
+<p>[conclusions from this figure]</p>
+<div class="tip admonition">
+<p class="admonition-title">Key Takeaways:</p>
+<p>[key takeaways]</p>
+</div>
+</section>
+</section>
 <hr class="docutils" />
 <section id="act-phase">
 <h2>6. Act Phase<a class="headerlink" href="#act-phase" title="Permalink to this headline">#</a></h2>
@@ -2403,7 +2861,7 @@ Name: time_diff, Length: 375, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_91_0.png" src="../_images/bellabeat_analysis_91_0.png" />
+<img alt="../_images/bellabeat_analysis_115_0.png" src="../_images/bellabeat_analysis_115_0.png" />
 </div>
 </div>
 </section>
