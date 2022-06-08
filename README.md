@@ -2,6 +2,8 @@
 
 This is a repository to highlight portfolio projects. 
 
+Note: This README will soon be updated. Please visit fahm1.github.io/portfolio/ for the latest version.
+
 <h3>Table of Contents:</h3>
 
 1. [Project 1: Troll Tweet Analysis](#Project-1)
