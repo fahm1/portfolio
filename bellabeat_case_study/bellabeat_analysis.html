@@ -899,11 +899,10 @@ use these conclusions to advertise how bellabeat membership and usage can lead t
 </div>
 </div>
 </div>
-<p>We can then take a look at which data files we have available.<br />
-<strong>TODO:</strong> change the path to be generalized</p>
+<p>We can then take a look at which data files we have available.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Data_Fitbase&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -930,7 +929,6 @@ use these conclusions to advertise how bellabeat membership and usage can lead t
 </div>
 </div>
 </div>
-<p><strong>TODO:</strong> use MYST md notebooks to make all of the reading in and brief overview of the dataframes into tabs to save vertical space.</p>
 <p>We can now start reading in the files that we will be using in our analysis.<br />
 But first, we can create a simple function that will return important information about each created dataframe, such as the column names, shape, duplicate row count, and missing value count.</p>
 <div class="cell docutils container">
@@ -2462,7 +2460,7 @@ In order to still be able to refer to <code class="docutils literal notranslate"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_93_0.png" src="../_images/bellabeat_analysis_93_0.png" />
+<img alt="../_images/bellabeat_analysis_92_0.png" src="../_images/bellabeat_analysis_92_0.png" />
 </div>
 </div>
 <p>Somewhat surprisingly, the the largest activity level group among the FitBit users is actually the ‘Sedentary’ group. This may be surprising, considering that you might expect that only active individuals would seek out a health and fitness-focused smart device. Understanding this, Bellabeat should shift their marketing strategy to advertise towards not only active individuals, but also those who are sedentary. Beyond that, we can see that only a minority of the users reached the ‘Very Active’ level of 10,000 steps or more per day. This is considered unhealthy for most people, and Bellabeat could also market that their membership service will improve the health and fitness of subscribers as their activity level can be monitored and improved.</p>
@@ -2670,7 +2668,7 @@ The goal behind this is that we may be able to identify two different trends in 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_101_0.png" src="../_images/bellabeat_analysis_101_0.png" />
+<img alt="../_images/bellabeat_analysis_100_0.png" src="../_images/bellabeat_analysis_100_0.png" />
 </div>
 </div>
 <p>And then the average minutes of sleep by day of the week:</p>
@@ -2702,7 +2700,7 @@ The goal behind this is that we may be able to identify two different trends in 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_103_0.png" src="../_images/bellabeat_analysis_103_0.png" />
+<img alt="../_images/bellabeat_analysis_102_0.png" src="../_images/bellabeat_analysis_102_0.png" />
 </div>
 </div>
 <p>Interestingly, we can see that on average, the FitBit users are not reaching either the daily recommended steps or the daily recommended sleep. Coinciding with the earlier plot in 5.1, we can see that the users on average are not following healthy habits. Knowing this, Bellabeat should shift their marketing strategy to be more along the lines of being able to help their users achieve healthier fitness and sleeping habits. Beyond this, we can notice that there are some trends in both steps and sleep by day of the week. For example, the average steps taken per day seems to take a lull in the middle of the week from Wednesday until the weekend, and the lowest step count is seen on Sunday. With this in mind, Bellabeat should provide push notifications from their app reminding users to take a quick walk in order to fulfill their daily steps requirements. Similarly, we can see some slight increases in sleep on the weekend, but it takes a dip on the weekdays. Though the recommended 8 hours per day is not being followed, Bellabeat should send extra push notifications during the weekdays to remind users to wind down and try to get to bed early so that they can get their needed sleep.</p>
@@ -2855,7 +2853,7 @@ In order to calculate the time spent in each sleep state, adding a ‘date’ co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_111_0.png" src="../_images/bellabeat_analysis_111_0.png" />
+<img alt="../_images/bellabeat_analysis_110_0.png" src="../_images/bellabeat_analysis_110_0.png" />
 </div>
 </div>
 <div class="full-width docutils">
@@ -2980,7 +2978,7 @@ In order to calculate the time spent in each sleep state, adding a ‘date’ co
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_118_0.png" src="../_images/bellabeat_analysis_118_0.png" />
+<img alt="../_images/bellabeat_analysis_117_0.png" src="../_images/bellabeat_analysis_117_0.png" />
 </div>
 </div>
 <p>We can see that the many of steps are taken around noon and lunchtime before dipping a bit midday, then the majority of steps are taken as the evening approaches. The calories burned seems to follow the number of steps taken quite closely, which is to be expected. Knowing that most steps are taken in the afternoon and evening, Bellabeat will be able to refine when they are sending push notifications to remind users to get their steps in, as they know which time of day their users are most likely to be able to get their steps in. Furthermore, Bellabeat should also focus their marketing on how their products are fashionable and can be worn to stand out everywhere, particularly places where users may be around lunchtime, for example at work or in a restaurant.</p>
@@ -3241,7 +3239,7 @@ Name: day_wear, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bellabeat_analysis_134_0.png" src="../_images/bellabeat_analysis_134_0.png" />
+<img alt="../_images/bellabeat_analysis_133_0.png" src="../_images/bellabeat_analysis_133_0.png" />
 </div>
 </div>
 <p>We can see that the majority of users are wearing their device most of the day or all day, but there are a few users who are wearing their device for less than 50% of the day. This is a good indication that Bellabeat should focus their marketing on how their devices can easily last all-day, as this will attract the most users to their products. Beyond this, it is also important to note that should Bellabeat develop a new device with a touchscreen, they should remember the importance of having a long-lasting battery, as the vast majority of users will be using their device for a very significant portion of the day, and consumers will look at battery life as a key factor in determining their purchase.</p>
