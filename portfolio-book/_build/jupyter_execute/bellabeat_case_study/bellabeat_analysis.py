@@ -16,7 +16,7 @@
 # 1. __Ask__ - Identify the business problem at hand and how insights from the data can drive business decisions. 
 # 2. __Prepare__ - Identify and gather relevant data and organize all files.
 # 3. __Process__ - Use tools to glean basic information from the data while cleaning up and validating the data. 
-# 4. __Analyze and Share__ - Perform calculations identify trends and relationships, and create visualizations to tackle the business question. 
+# 4. __Analyze and Share__ - Perform calculations, identify trends and relationships, and create visualizations to tackle the business question. 
 # 5. __Act__ - Provide final recommendations for the business and how to move forward by making data-driven decisions. 
 # 
 # ```{tip}
