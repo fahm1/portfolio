@@ -161,16 +161,13 @@ import seaborn as sns
 import os
 
 
-# We can then take a look at which data files we have available.  
-# __TODO:__ change the path to be generalized
+# We can then take a look at which data files we have available.
 
 # In[2]:
 
 
-os.listdir(r'C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase')
+os.listdir(r'Data_Fitbase')
 
-
-# __TODO:__ use MYST md notebooks to make all of the reading in and brief overview of the dataframes into tabs to save vertical space. 
 
 # We can now start reading in the files that we will be using in our analysis.  
 # But first, we can create a simple function that will return important information about each created dataframe, such as the column names, shape, duplicate row count, and missing value count. 
