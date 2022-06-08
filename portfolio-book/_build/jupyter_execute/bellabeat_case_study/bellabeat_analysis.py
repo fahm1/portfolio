@@ -7,11 +7,17 @@
 # ```
 
 # # Bellabeat Case Study
-# <!-- # <span style="color:#FA8072">Bellabeat Case Study</span> -->
-# <!-- !jupyter nbconvert --to markdown README.ipynb -->
-# 
+
 # **Name:** Fahmi I.  
-# **Date:** June 6th, 2022
+# **Date:** June 8th, 2022
+# 
+# This analysis will be broken down into 6 distinct phases:
+# 1. __Introduction__ - Introduce the company and their products. 
+# 1. __Ask__ - Identify the business problem at hand and how insights from the data can drive business decisions. 
+# 2. __Prepare__ - Identify and gather relevant data and organize all files.
+# 3. __Process__ - Use tools to glean basic information from the data while cleaning up and validating the data. 
+# 4. __Analyze and Share__ - Perform calculations identify trends and relationships, and create visualizations to tackle the business question. 
+# 5. __Act__ - Provide final recommendations for the business and how to move forward by making data-driven decisions. 
 # 
 # ```{tip}
 # A table of contents for this notebook can be found on the top-right corner of this page. 
@@ -50,7 +56,7 @@
 
 # ---
 
-# ## 2. Ask-Phase
+# ## 2. Ask
 
 # ### 2.1 Business Task
 # Analyze __non-Bellabeat__ smart device usage to gain insight on how consumers use their smart devices and discover trends that could be used to improve Bellabeat's marketing strategy. 
@@ -69,7 +75,7 @@
 
 # ---
 
-# ## 3. Prepare Phase
+# ## 3. Prepare 
 
 # ### 3.1 Dataset Information
 # ````{margin}
@@ -129,7 +135,7 @@
 
 # ---
 
-# ## 4. Process Phase
+# ## 4. Process 
 
 # Due to the number of data files and their size, I will be using Python to process the data. 
 
@@ -144,7 +150,7 @@
 
 # Starting off by importing the libraries we will need, all of which are standard for data analysis. 
 
-# In[447]:
+# In[1]:
 
 
 import numpy as np
@@ -169,7 +175,7 @@ os.listdir(r'C:\Users\fahmi\Documents\Portfolio\Large Files\Data_Fitbase')
 # We can now start reading in the files that we will be using in our analysis.  
 # But first, we can create a simple function that will return important information about each created dataframe, such as the column names, shape, duplicate row count, and missing value count. 
 
-# In[84]:
+# In[3]:
 
 
 def df_info(df: pd.DataFrame, name: str='df', dup_rows: bool=True, missing_values: bool=True):
@@ -189,7 +195,7 @@ def df_info(df: pd.DataFrame, name: str='df', dup_rows: bool=True, missing_value
 # The names of the 'date' columns in each of the .csv files have already been identified using the [Fitabase description of the dataset](https://www.fitabase.com/media/1930/fitabasedatadictionary102320.pdf) in order to save time when changing the datatype of the 'date' columns from 'object' to 'datetime64[ns]'. 
 # ```
 
-# In[152]:
+# In[4]:
 
 
 original_day_activity = pd.read_csv(
@@ -200,11 +206,7 @@ df_day_activity = original_day_activity.copy()
 df_info(df=df_day_activity, name='df_day_activity')
 
 
-# __TODO:__ 
-# * make cells with wide dataframes wide on website
-# * drop unnecessary columns when creating df
-
-# In[86]:
+# In[5]:
 
 
 df_day_activity.head(3)
@@ -212,7 +214,7 @@ df_day_activity.head(3)
 
 # We can then do the same with the hourly steps data:
 
-# In[87]:
+# In[6]:
 
 
 original_hour_steps = pd.read_csv(
@@ -223,7 +225,7 @@ df_hour_steps = original_hour_steps.copy()
 df_info(df=df_hour_steps, name='df_hour_steps')
 
 
-# In[88]:
+# In[7]:
 
 
 df_hour_steps.head(3)
@@ -231,7 +233,7 @@ df_hour_steps.head(3)
 
 # And the hourly calories burned data:
 
-# In[89]:
+# In[8]:
 
 
 original_hour_calories = pd.read_csv(
@@ -242,7 +244,7 @@ df_hour_calories = original_hour_calories.copy()
 df_info(df=df_hour_calories, name='df_hour_calories')
 
 
-# In[90]:
+# In[9]:
 
 
 df_hour_calories.head(3)
@@ -250,7 +252,7 @@ df_hour_calories.head(3)
 
 # Then the daily sleep data:
 
-# In[91]:
+# In[10]:
 
 
 original_day_sleep = pd.read_csv(
@@ -266,7 +268,7 @@ df_info(df=df_day_sleep, name='df_day_sleep')
 # Unlike with the other datafrarmes, we can see that there's actually 3 duplicate rows in the daily sleep data that we will take care of later. 
 # ```
 
-# In[92]:
+# In[11]:
 
 
 df_day_sleep.head(3)
@@ -274,7 +276,7 @@ df_day_sleep.head(3)
 
 # And finally, the minute sleep data:
 
-# In[93]:
+# In[12]:
 
 
 original_min_sleep = pd.read_csv(
@@ -290,7 +292,7 @@ df_info(df=df_min_sleep, name='df_min_sleep')
 # In the minute sleep data, we can see that there's 543 duplicate rows that we need to take care of as part of data cleaning. 
 # ```
 
-# In[94]:
+# In[13]:
 
 
 df_min_sleep.head(3)
@@ -300,21 +302,21 @@ df_min_sleep.head(3)
 # 
 # The first thing we should do as part of the data cleaning process is take care of the duplicate rows that we identified earlier in the ```df_day_sleep``` and ```df_min_sleep``` dataframes. 
 
-# In[95]:
+# In[14]:
 
 
 df_info(df=df_day_sleep, name='df_day_sleep')
 df_info(df=df_min_sleep, name='df_min_sleep')
 
 
-# In[96]:
+# In[15]:
 
 
 df_day_sleep.drop_duplicates(keep='first', inplace=True)
 df_info(df=df_day_sleep, name='df_day_sleep')
 
 
-# In[97]:
+# In[16]:
 
 
 df_min_sleep.drop_duplicates(keep='first', inplace=True)
@@ -334,19 +336,19 @@ df_info(df=df_min_sleep, name='df_min_sleep')
 # 
 # Now we can go on to eliminate columns that are unnecessary for our analysis, and rename columns as needed. 
 
-# In[153]:
+# In[17]:
 
 
 df_info(df=df_day_activity, name='df_day_activity', dup_rows=False, missing_values=False)
 
 
-# In[159]:
+# In[18]:
 
 
-columns_df_da = list(df_day_activity.columns.values)[4:-1]
+columns_df_da = list(df_day_activity.columns.values)[4:-5]
 
 
-# In[160]:
+# In[19]:
 
 
 df_day_activity = df_day_activity.rename(columns={'ActivityDate': 'date', 'Id': 'id'})\
@@ -357,13 +359,13 @@ df_info(df=df_day_activity, name='df_day_activity', dup_rows=False, missing_valu
 # <br>
 # <br>
 
-# In[100]:
+# In[20]:
 
 
 df_info(df_hour_steps, name='df_hour_steps', dup_rows=False, missing_values=False)
 
 
-# In[101]:
+# In[21]:
 
 
 df_hour_steps = df_hour_steps.rename(columns={'Id': 'id', 'ActivityHour': 'date_time'})
@@ -373,13 +375,13 @@ df_info(df_hour_steps, name='df_hour_steps', dup_rows=False, missing_values=Fals
 # <br>
 # <br>
 
-# In[102]:
+# In[22]:
 
 
 df_info(df_hour_calories, name='df_hour_calories', dup_rows=False, missing_values=False)
 
 
-# In[103]:
+# In[23]:
 
 
 df_hour_calories = df_hour_calories.rename(columns={'Id': 'id', 'ActivityHour': 'date_time'})
@@ -389,13 +391,13 @@ df_info(df_hour_calories, name='df_hour_calories', dup_rows=False, missing_value
 # <br>
 # <br>
 
-# In[104]:
+# In[24]:
 
 
 df_info(df_day_sleep, name='df_day_sleep', dup_rows=False, missing_values=False)
 
 
-# In[105]:
+# In[25]:
 
 
 df_day_sleep = df_day_sleep.rename(columns={'Id': 'id', 'SleepDay': 'date'})
@@ -405,13 +407,13 @@ df_info(df_day_sleep, name='df_day_sleep', dup_rows=False, missing_values=False)
 # <br>
 # <br>
 
-# In[106]:
+# In[26]:
 
 
 df_info(df_min_sleep, name='df_min_sleep', dup_rows=False, missing_values=False)
 
 
-# In[107]:
+# In[27]:
 
 
 df_min_sleep = df_min_sleep.rename(columns={'Id': 'id', 'date': 'date_time'})\
@@ -437,7 +439,7 @@ df_info(df_min_sleep, name='df_min_sleep', dup_rows=False, missing_values=False)
 # 
 # Starting off with the  ```df_day_activity``` and ```df_day_sleep``` dataframes to make ```df_day_activity_sleep```:
 
-# In[161]:
+# In[28]:
 
 
 df_day_activity_sleep = df_day_sleep.merge(right=df_day_activity, on=['id', 'date'], 
@@ -445,7 +447,7 @@ df_day_activity_sleep = df_day_sleep.merge(right=df_day_activity, on=['id', 'dat
 df_info(df_day_activity_sleep, name='df_day_activity_sleep')
 
 
-# In[162]:
+# In[29]:
 
 
 df_day_activity_sleep.head(3)
@@ -453,7 +455,7 @@ df_day_activity_sleep.head(3)
 
 # And then combining the ```df_hour_steps``` and ```df_hour_calories``` dataframes to make ```df_hour_steps_calories```:
 
-# In[116]:
+# In[30]:
 
 
 df_hour_steps_calories = df_hour_steps.merge(right=df_hour_calories, on=['id', 'date_time'],
@@ -461,7 +463,7 @@ df_hour_steps_calories = df_hour_steps.merge(right=df_hour_calories, on=['id', '
 df_info(df_hour_steps_calories, name='df_hour_steps_calories')
 
 
-# In[118]:
+# In[31]:
 
 
 df_hour_steps_calories.head(3)
@@ -469,7 +471,7 @@ df_hour_steps_calories.head(3)
 
 # And our final dataframe, ```df_min_sleep```:
 
-# In[119]:
+# In[32]:
 
 
 df_min_sleep.head(3)
@@ -479,7 +481,7 @@ df_min_sleep.head(3)
 # 
 # For our now 3 dataframes, we can add a `day_of_week` column that will be used to identify the day of the week for each date. This may make it easier to visualize the data later on. 
 
-# In[137]:
+# In[33]:
 
 
 df_day_activity_sleep['day_of_week'] = df_day_activity_sleep['date'].dt.day_name()
@@ -489,7 +491,7 @@ df_min_sleep['day_of_week'] = df_min_sleep['date_time'].dt.day_name()
 
 # Then we can move the ```day_of_week``` column toward the front of the dataframe:
 
-# In[138]:
+# In[34]:
 
 
 day_of_week = df_day_activity_sleep['day_of_week']
@@ -507,19 +509,19 @@ df_min_sleep.insert(loc=2, column='day_of_week', value=day_of_week)
 
 # And taking a final quick look at the dataframes before analysis:
 
-# In[165]:
+# In[35]:
 
 
 df_day_activity_sleep.head(3)
 
 
-# In[140]:
+# In[36]:
 
 
 df_hour_steps_calories.head(3)
 
 
-# In[141]:
+# In[37]:
 
 
 df_min_sleep.head(3)
@@ -527,12 +529,13 @@ df_min_sleep.head(3)
 
 # ---
 
-# ## 5. Analyze and Share Phase
+# ## 5. Analyze and Share 
 # <!-- <a name='Analyze-and-Share-Phase'></a><h3 style="color:#FA8072">5. Analyze and Share Phase:</h3> -->
 
 # With our data clean and processed, we can now begin to analyze the data to see how we can influence and improve Bellabeat's marketing decisions. 
 # 
 # ### 5.1 Activity Level Distribution
+
 # First off, we can classify the individuals in the ```df_day_activity_sleep``` dataframe into 4 activity levels as adjusted from [10000steps.org.au](https://www.10000steps.org.au/articles/counting-steps/):
 # 
 # With this information, Bellabeat will be able to get an understanding of the demographics of users who use smart fitness devices like the FitBit, and an idea of what types of individuals they should focus their marketing efforts towards. 
@@ -549,13 +552,13 @@ df_min_sleep.head(3)
 # To do this, we can first find the average steps taken per day for each of the individuals in the ```df_day_activity_sleep``` dataframe.  
 # In order to still be able to refer to ```df_day_activity_sleep``` afterwards, we can create a new dataframe called ```df_avg_actslp``` that will be grouped by ```id``` and then the columns will be averaged. 
 
-# In[168]:
+# In[38]:
 
 
 df_avg_actslp = df_day_activity_sleep.copy().groupby(by='id').mean().reset_index()
 
 
-# In[169]:
+# In[39]:
 
 
 df_avg_actslp.head(3)
@@ -563,20 +566,21 @@ df_avg_actslp.head(3)
 
 # Now that we have the average steps taken per day for each individual, we can classify each of them into the 4 activity levels. 
 
-# In[171]:
+# In[40]:
 
 
-conditions = [df_avg_actslp.TotalSteps < 5000, 
+condlist = [
+              df_avg_actslp.TotalSteps < 5000, 
               (df_avg_actslp.TotalSteps >= 5000) & (df_avg_actslp.TotalSteps < 7499),
               (df_avg_actslp.TotalSteps >= 7500) & (df_avg_actslp.TotalSteps < 9999),
               (df_avg_actslp.TotalSteps >= 10_000)
              ]
-choices = ['sedentary', 'lightly active', 'moderately active', 'very active']
+choicelist = ['sedentary', 'lightly active', 'moderately active', 'very active']
 
-df_avg_actslp['activity_level'] = np.select(conditions, choices, default=np.nan)
+df_avg_actslp['activity_level'] = np.select(condlist, choicelist, default=np.nan)
 
 
-# In[176]:
+# In[41]:
 
 
 df_avg_actslp.head(3)
@@ -584,7 +588,7 @@ df_avg_actslp.head(3)
 
 # We should also make sure that this worked for all of the rows, and there weren't any null values added to the dataframe. 
 
-# In[173]:
+# In[42]:
 
 
 df_info(df_avg_actslp, name='df_avg_actslp')
@@ -592,28 +596,28 @@ df_info(df_avg_actslp, name='df_avg_actslp')
 
 # Now we can create a new dataframe called ```df_pct_actlvl``` for 'df_percent_activity_level' that will be grouped by ```activity_level``` with the percent of individuals in each activity level.
 
-# In[280]:
+# In[43]:
 
 
 df_pct_actlvl = df_avg_actslp.activity_level.value_counts(normalize=True).reset_index()
 
 
-# In[281]:
+# In[44]:
 
 
 df_pct_actlvl.rename(columns={'index': 'activity_level', 'activity_level': 'percentage'}, inplace=True)
 df_pct_actlvl.percentage *= 100
 
 
-# In[282]:
+# In[45]:
 
 
-df_pct_actlvl.head(3)
+df_pct_actlvl
 
 
 # With this dataframe, we can plot the percentages of individuals in each activity level:
 
-# In[309]:
+# In[46]:
 
 
 fig, ax = plt.subplots(figsize=(12,12), facecolor='w')
@@ -628,8 +632,9 @@ plt.pie(
 ax.add_artist(plt.Circle((0,0), 0.7, color='white'))
 
 fig.suptitle('Percentage of Users \nin Each Activity Level', 
-             x=0.505, y=0.5, fontsize=26, ha='center', va='center')
+             x=0.52, y=0.5, fontsize=26, ha='center', va='center')
 
+# plt.savefig('activity_levels.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 
@@ -649,24 +654,33 @@ plt.show()
 # 1. Are users taking the recommended 10,000 steps and sleeping the recommended 8 hours per day?
 # 2. Do users display healthier habits on certain days of the week more than others?
 # 
-# With this information, Bellabeat will be able to identify if smart fitness device users are on average displaying healthy habits and provide in-app recommendations and reminders when users are not achieving healthy numbers or their personalized goals. As a result, Bellabeat will be able to identify if they should shift their marketing strategy to 
-# Bellabeat will be able to market their app and membership as being able to help users achieve their health goals by improving their fitness and sleep. 
+# With this information, Bellabeat will be able to identify if smart fitness device users are on average displaying healthy habits and provide in-app recommendations and reminders when users are not achieving healthy numbers or their personalized goals. As a result, Bellabeat will be able to identify if they should shift their marketing strategy to promote healthier fitness and sleeping habits, or whether their users are already doing well. Furthermore, Bellabeat will be able to market their app and membership as being able to help users achieve their health goals by improving their fitness and sleep. 
+# 
+# We can start of by taking a look at what the average steps and sleep per day of the week looks like. 
+# 
+# ````{margin}
+# ```{tip}
+# We don't have to actually assign a new variable for this dataframe, as plotting a barplot with seaborn will essentailly automatically take care of the calculations for us. 
+# ```
+# ````
 
-# In[314]:
+# In[47]:
 
 
 df_day_activity_sleep.groupby(by='day_of_week').mean().drop(columns='id').reset_index()
 
 
-# We can first establish a week order to be used for following plots. 
+# Now, we can establish a week order to be used for all following plots. 
 
-# In[342]:
+# In[48]:
 
 
 WEEK_ORDER = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 
-# In[451]:
+# Then we can plot the average steps taken by day of the week:
+
+# In[68]:
 
 
 fig, ax = plt.subplots(figsize=(12, 8), facecolor='w')
@@ -674,7 +688,7 @@ plt.rcParams.update({'font.size': 14})
 
 sns.barplot(
             data=df_day_activity_sleep, x='day_of_week', y='TotalSteps', 
-            order=WEEK_ORDER, palette='icefire', ci=None
+            order=WEEK_ORDER, palette='icefire', ci=None, alpha=0.8
             )
 plt.text(x=-0.4, y=10_100, s='recommended daily steps', 
          color='red', ha='left')
@@ -682,7 +696,6 @@ plt.axhline(y=10_000, color='red', linestyle='--', linewidth=2)
 
 ax.set_xlabel('Day of the Week', fontsize=16, labelpad=10)
 ax.set_ylabel('Average Steps', fontsize=16, labelpad=10)
-# ax.set_yticklabels(['{:,.0f}'.format(x) for x in ax.get_yticks()])
 ax.yaxis.set_major_formatter(mpl.ticker.StrMethodFormatter('{x:,.0f}'))
 ax.tick_params(axis='both', size=0)
 
@@ -690,10 +703,14 @@ ax.grid(axis='y', linestyle='--', alpha=0.8)
 sns.despine(bottom=True, left=True)
 fig.suptitle('Average Steps by Day of the Week',
              fontsize=20, x=0.13, y=0.95, ha='left')
+
+# plt.savefig('steps_weekly.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 
-# In[450]:
+# And then the average minutes of sleep by day of the week:
+
+# In[50]:
 
 
 fig, ax = plt.subplots(figsize=(12, 8), facecolor='w')
@@ -701,7 +718,7 @@ plt.rcParams.update({'font.size': 14})
 
 sns.barplot(
             data=df_day_activity_sleep, x='day_of_week', y='TotalMinutesAsleep', 
-            order=WEEK_ORDER, palette='icefire', ci=None
+            order=WEEK_ORDER, palette='icefire', ci=None, alpha=0.8
             )
 plt.text(x=-0.4, y=485, s='recommended daily sleep (8 hours)', 
          color='red', ha='left')
@@ -715,72 +732,51 @@ ax.grid(axis='y', linestyle='--', alpha=0.8)
 sns.despine(bottom=True, left=True)
 fig.suptitle('Average Minutes Asleep by Day of the Week',
              fontsize=20, x=0.13, y=0.95, ha='left')
+
+# plt.savefig('sleep_weekly.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 
-# [conclusions from this figure]
+# Interestingly, we can see that on average, the FitBit users are not reaching either the daily recommended steps or the daily recommended sleep. Coinciding with the earlier plot in 5.1, we can see that the users on average are not following healthy habits. Knowing this, Bellabeat should shift their marketing strategy to be more along the lines of being able to help their users achieve healthier fitness and sleeping habits. Beyond this, we can notice that there are some trends in both steps and sleep by day of the week. For example, the average steps taken per day seems to take a lull in the middle of the week from Wednesday until the weekend, and the lowest step count is seen on Sunday. With this in mind, Bellabeat should provide push notifications from their app reminding users to take a quick walk in order to fulfill their daily steps requirements. Similarly, we can see some slight increases in sleep on the weekend, but it takes a dip on the weekdays. Though the recommended 8 hours per day is not being followed, Bellabeat should send extra push notifications during the weekdays to remind users to wind down and try to get to bed early so that they can get their needed sleep. 
 # 
 # ```{admonition} Key Takeaways:
 # :class: tip
-# [key takeaways]
+# * Bellabeat should shift their marketing strategy to be more along the lines of 'most people don't have a healthy lifestyle--we can help you achieve one!'
+# * Bellabeat should provide push notifications through their mobile app to remind users to take a quick walk or to get to bed early particularly during the weekdays since the majority of users are not following healthy fitness and health habits. 
 # ```
 
-# ---
+# #### 5.2.2 Daily Sleep Analysis
+# 
+# Devling a bit further with regards to the sleep data, we can analyze to see the quality of sleep per day of the week.  
+# Using the ```df_min_sleep``` dataframe, we can analyze the amount of time users are spending asleep, restless, and awake in bed while trying to sleep. We can also see if users are more restless on certain days of the week more than others. 
 
-# ## 6. Act Phase
-# <!-- <a name='Act-Phase'></a><h3 style="color:#FA8072">6. Act Phase:</h3> -->
+# The 'value' column has 3 values corresponding to the 3 different sleep states:
+# 1: Asleep
+# 2: Restless
+# 3: Awake in bed
+# 
+# In this case, this visualization will be showing data for a single individual rather than for all individuals, so generalizations based on the data may not be possible, but we can see what the data looks like on an individual basis.  
+# In order to calculate the time spent in each sleep state, adding a 'date' column will allow us to make sure that we only check dates where there is actually data for each individual. 
 
-# ---
-
-# ### Bonus Sleep Analysis
-
-# In[74]:
+# In[51]:
 
 
 df_min_sleep['day_of_week'] = df_min_sleep['date_time'].dt.day_name()
 df_min_sleep['date'] = df_min_sleep['date_time'].dt.date
 
 
-# In[75]:
+# In[52]:
 
 
 df_min_sleep.head(3)
 
 
-# In[76]:
+# And then we can use a funciton to plot the data with which we can supply a user ID and return their sleep data:
+
+# In[53]:
 
 
-df_min_sleep['time_diff'] = df_min_sleep.groupby('id')['date_time'].diff()
-
-
-# In[77]:
-
-
-df_min_sleep.head(5)
-
-
-# In[78]:
-
-
-df_min_sleep.time_diff.value_counts()
-
-
-# In[79]:
-
-
-df_min_sleep = df_min_sleep[df_min_sleep.time_diff == np.timedelta64(1, 'm')]
-
-
-# In[80]:
-
-
-df_info(df_min_sleep, 'df_min_sleep')
-
-
-# In[81]:
-
-
-def plot_sleep(df_min_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
+def plot_sleep(df_min_sleep: pd.DataFrame, user_id: int, repeat_ylabel: bool = True):
     '''
     Plots sleep data for a given id
     
@@ -790,12 +786,11 @@ def plot_sleep(df_min_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
             repeat_ylabel (bool):        Whether to repeat y-axis label
     '''
 
-    WEEK_ORDER= ['Monday', 'Tuesday', 'Wednesday',
-                 'Thursday', 'Friday', 'Saturday', 'Sunday']
     SLEEP_STATE = ['Asleep', 'Restless', 'Awake in Bed']
 
     fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(22, 8), facecolor='w')
-    df_id = df_min_sleep.loc[df_min_sleep.id == id]
+    user_id = df_min_sleep.id.unique()[user_id]
+    df_id = df_min_sleep.loc[df_min_sleep.id == user_id]
     
     for idx, ax in enumerate(axes):
 
@@ -831,15 +826,215 @@ def plot_sleep(df_min_sleep: pd.DataFrame, id: int, repeat_ylabel: bool = True):
                  fontsize=22, x=0.123, y=1.05, ha='left')
 
 
-# In[82]:
+# In[54]:
 
 
-ids = df_min_sleep.id.unique()
-len(ids)
+plot_sleep(df_min_sleep, user_id=0)
+# plt.savefig('sleep_indiv.png', dpi=300, bbox_inches='tight')
 
 
-# In[83]:
+# ````{div} full-width
+# We can see that user 0 is only getting about 6 hours of sleep most days, while they sleep in on Sundays. Also, we can see that the user is mostly restless during the weekdays, particularly on Mondays and Thursdays. And finally, we can see that the user doesn't spend much time in bed awake, though on some particular days there seems to be a bit more time spent awake than others. With all of this information in mind, Bellabeat can market that with their membership service, they will be able to identify key areas of improvement for their users and indivudalize their suggestions. In particular, they will be able to identify key days where an individual user may be struggling, such as Thursdays for user 0, where they are spending a lot of time restless in bed and end up with little sleep. With these weaknesses identified, Bellabeat will be able to push notifications to the user to encourage them to take a quick walk or get to bed early. Finally, Bellabeat will be able to attract more users to their products and particularly to their subscription membership service, while also improving the sleep quality of their users. 
+# 
+# ```{admonition} Key Takeaways:
+# :class: tip
+# * Bellabeat should market that signing up for their subscription service will lead to a better sleep quality for their users with individualized suggestions and reminders for each user for every day of the week. 
+# ```
+# ````
+
+# ### 5.3 Daily Trends in Steps and Calories
+
+# We can go on to analyze what time of day users are most likely to be doing activity, resulting in steps and calories burned. With this knowledge, Bellabeat will be able to identify trends in what time of the day users are most likley to be able to do some form of activity, and can then provide push notifications to encourage users to start. Also, by understanding the time trends, Bellabeat will be able to better market their fashionable products, as if many users are getting in steps during the middle of the day, this suggests that the users are wearing their smart devices outside to work, etc., and Bellabeat would have the edge in that users may be more likely to wear a fashionable product rather than an upleasant one sold by competitors. 
+# 
+# We can start of by isolating the hours of the day and place them into a new column in ```df_hour_steps_calories```:
+
+# In[55]:
 
 
-plot_sleep(df_min_sleep, id=ids[0])
+df_hour_steps_calories['time'] = df_hour_steps_calories['date_time'].apply(lambda t: t.strftime('%H:%M'))
 
+
+# In[56]:
+
+
+df_hour_steps_calories.head(3)
+
+
+# And then we can get right to plotting the data:
+
+# In[57]:
+
+
+fig, ax = plt.subplots(figsize=(12, 8), facecolor='w')
+plt.rcParams.update({'font.size': 14})
+
+sns.barplot(
+            data=df_hour_steps_calories, x='time', y='StepTotal', 
+            palette='icefire', ci=None, alpha=0.8, ax=ax
+            )
+ax.set_xlabel('Time', fontsize=16, labelpad=15)
+ax.set_ylabel('Steps Taken', fontsize=16, labelpad=10)
+ax.tick_params(axis='both', size=0)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+ax.grid(axis='y', linestyle='--', alpha=0.8)
+
+ax2 = ax.twinx()
+sns.lineplot(data=df_hour_steps_calories, x='time', y='Calories',
+             marker='o', ax=ax2)
+ax2.set_ylabel('Calories Burned', fontsize=16, labelpad=10)
+ax2.tick_params(axis='both', size=0)
+ax2.set_yticks([74, 85, 96, 107, 118, 129])
+
+plt.text(4.3, 75, 'Calories Burned \u2192', color=plt.cm.Blues(0.8), ha='right')
+
+sns.despine(bottom=True, left=True)
+fig.suptitle('Steps Taken and Calories Burned by Time of Day',
+             fontsize=20, x=0.13, y=0.95, ha='left')
+
+# plt.savefig('steps_cal_day.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+
+# We can see that the many of steps are taken around noon and lunchtime before dipping a bit midday, then the majority of steps are taken as the evening approaches. The calories burned seems to follow the number of steps taken quite closely, which is to be expected. Knowing that most steps are taken in the afternoon and evening, Bellabeat will be able to refine when they are sending push notifications to remind users to get their steps in, as they know which time of day their users are most likely to be able to get their steps in. Furthermore, Bellabeat should also focus their marketing on how their products are fashionable and can be worn to stand out everywhere, particularly places where users may be around lunchtime, for example at work or in a restaurant. 
+#     
+# ```{admonition} Key Takeaways:
+# :class: tip
+# * The majority of steps taken and calories burned occur around noon and in the evening, so Bellabeat should send push notifications to remind users to get their steps in at these times for maximum rates of success. 
+# * Bellabeat should focus their marketing on how their products are fashionable and can be worn proudly at any time of the day, wherever users are. 
+# ```
+
+# ### 5.4 Daily Time of Device Usage
+# 
+
+# Another important metric that we can analyze is the amount of time each day for which users are wearing their device. This will help Bellabeat understand if a long-lasting battery is important to users of smart fitness devices. Beyond this, Bellabeat will also be able to identify whether they should shift their marketing strategy to highlight the long-lasting battery of their products.
+# 
+# We can start off with the ```df_day_activity_sleep``` dataframe and calculate the percentage of time each day for which users are wearing their device
+
+# In[58]:
+
+
+MINUTES_PER_DAY = 24 * 60
+df_day_activity_sleep['percent_day_worn'] = df_day_activity_sleep.iloc[:, -5:-1].sum(axis=1) / MINUTES_PER_DAY
+
+
+# Then we can group the data by user ID and calculate the average percent of usage per day
+
+# In[59]:
+
+
+df_worn = df_day_activity_sleep.groupby(by='id').mean()
+
+
+# In[60]:
+
+
+df_worn.head(3)
+
+
+# Similar to what we did for the earlier plot in 5.1, we can once again classify the data into three categories for how long the user wears their device each day:  
+# 1. Device is worn >= 90% of the day - All Day
+# 2. Device is worn > 50% of the day - Most of the Day
+# 3. Device is worn <= 50% of the day - Part of the Day
+
+# In[61]:
+
+
+condlist = [
+            df_worn.percent_day_worn >= 0.9,
+            df_worn.percent_day_worn > 0.5,
+            df_worn.percent_day_worn <= 0.5            
+            ]
+choicelist = ['All Day', 'Most of the Day', 'Part of the Day']
+df_worn['day_wear'] = np.select(condlist, choicelist, default=np.nan)
+
+
+# In[62]:
+
+
+df_info(df_worn)
+
+
+# In[63]:
+
+
+df_worn.day_wear.head(3)
+
+
+# Then we can get what percent of the data fits into each category
+
+# In[64]:
+
+
+df_pct_worn = df_worn.day_wear.value_counts(normalize=True).reset_index()
+
+
+# In[65]:
+
+
+df_pct_worn
+
+
+# And we are ready to plot the data:
+
+# In[66]:
+
+
+fig, ax = plt.subplots(figsize=(12,12), facecolor='w')
+plt.rcParams.update({'font.size': 20})
+labels = ['Most of the Day', 'All Day', 'Part of the Day']
+
+plt.pie(
+        df_pct_worn.day_wear, startangle=25, labels=labels,
+        autopct='%1.1f%%', pctdistance=0.85, colors=plt.cm.Greens_r(np.arange(75, 226, 75)),
+        wedgeprops={'linewidth': 8, 'edgecolor': 'white'}
+        )
+ax.add_artist(plt.Circle((0,0), 0.7, color='white'))
+fig.suptitle('Time With Device\nWorn Per Day', 
+             x=0.52, y=0.5, fontsize=30, ha='center', va='center')
+
+# plt.savefig('use_pct.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+
+# We can see that the majority of users are wearing their device most of the day or all day, but there are a few users who are wearing their device for less than 50% of the day. This is a good indication that Bellabeat should focus their marketing on how their devices can easily last all-day, as this will attract the most users to their products. Beyond this, it is also important to note that should Bellabeat develop a new device with a touchscreen, they should remember the importance of having a long-lasting battery, as the vast majority of users will be using their device for a very significant portion of the day, and consumers will look at battery life as a key factor in determining their purchase. 
+# 
+# ```{admonition} Key Takeaways:
+# :class: tip
+# * Bellabeat should focus their marketing on how their devices can easily last all-day, as users appear to use their device for a significant portion of the day. 
+# * Bellabeat should keep in mind that the long-lasting battery of their devices is important to their users, and any future products that may be developed should have a long-lasting battery. 
+# ```
+
+# ## 6. Act
+# <!-- <a name='Act-Phase'></a><h3 style="color:#FA8072">6. Act Phase:</h3> -->
+
+# Returning to our business questions: 
+# 
+# Guiding Questions:
+# 1. What are some trends in smart device usage?
+# 2. How could these trends apply to Bellabeat customers?
+# 3. How could these trends help influence Bellabeat’s marketing strategy?
+# 
+# With all of the analysis that we have done, and an emphasis on data-driven decision making, I would recommend the following for Bellabeat:
+# 
+# __1. Icrease marketing towards sedentary and lightly active demographics.__
+# 
+# With the FitBit users, we were able to recognize that a majority of users (58.3%) classify under 'sedentary' or 'lightly active' demographics. Even though their products may be most tailored towards highly active individuals, the data suggests that the users buying these products are not always active. In order to maximize sales of their products, broadening their approach to wider demographics can bring in more customers for their products, which down the line can lead to increased membership purchases and even more increased revenue. 
+# 
+# __2. Market more towards the idea that Bellabeat devices can improve fitness, health, and sleep quality.__
+# ````{margin}
+# ```{tip}
+# The Mayo Clinic recommends taking [10,000 steps per day](https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/10000-steps/art-20317391) as a healthy lifestyle measure to reduce the risk of many diseases. The CDC recommends [having a workout buddy](https://www.cdc.gov/diabetes/library/spotlights/workout-buddy.html) to help you stay motivated in your workouts.
+# ```
+# ````
+# 
+# The majority of FitBit users were not reaching the recommended 10,000 steps per day, nor were they sleeping for the recommended 8 hours per day, particularly on weekdays. With this in mind, Bellabeat should include in their marketing that most people are not following healthy guidelines right now, but with a Bellabeat product and membership, Bellabeat will be able to help them reach their health and fitness goals. Some examples of how Bellabeat may help their members and attract more customers may include:
+# * using push notifications through the Bellabeat app to remind users to get their steps in and go to bed early
+# * use the app to create a type of social environment where users can come together to compete for fitness goals
+# * personalized advice for higher quality sleep for users recognized as having a low sleep quality
+# * develop a smart watch with a touch screen that will track workout data and easily remind users with notifications without having to pull their phones out
+# 
+# __3. Emphase the fashionable aspects of Bellabeat products as well as their long-lasting batteries.__
+# 
+# The data shows that, on average, the FitBit users are wearing their devices for the vast majority of the day, including during periods when they are out in public. As a result, emphasizing the great looks of the Bellabeat products will entice potential customers, as customers are looking for a device they can be proud to wear all day. Furthermore, since the users are wearing their devices for long periods of time each day, marketing the long-lasting batteries of Bellabeat products with greater significance will also help to attract more customers, as customers are placing great value on the battery life of their devices. With this in mind, if Bellabeat develops any new products, this value on battery life should be considered every step of the way, such as with a potential new smart watch with a touchscreen. 
+
+# __Thank you for reading through this case study!__
