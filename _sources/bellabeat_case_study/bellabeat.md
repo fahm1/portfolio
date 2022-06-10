@@ -1,6 +1,6 @@
 # Bellabeat Case Study
 
-```{tip}
+```{note}
 This page is meant to be a brief showcase of the project to highlight the business problem, visualizations, and the proposed data-driven decisions. To view the full project in-depth, please continue to the next page. 
 ```
 
