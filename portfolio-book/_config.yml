@@ -7,7 +7,7 @@
 
 title: Fahmi's Portfolio
 author: Fahmi I.
-copyright: '2022'
+# copyright: '2022'
 # logo: 
 
 # Execution settings
@@ -40,6 +40,8 @@ html:
 sphinx:
   recursive_update: true
   config:
+    language: en
+    html_show_copyright: false
     html_theme_options:
       extra_navbar: ""
       show_toc_level: 2

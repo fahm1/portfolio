@@ -1006,14 +1006,13 @@ plt.show()
 
 # Returning to our business questions: 
 # 
-# Guiding Questions:
 # 1. What are some trends in smart device usage?
 # 2. How could these trends apply to Bellabeat customers?
 # 3. How could these trends help influence Bellabeat’s marketing strategy?
 # 
 # With all of the analysis that we have done, and an emphasis on data-driven decision making, I would recommend the following for Bellabeat:
 # 
-# __1. Icrease marketing towards sedentary and lightly active demographics.__
+# __1. Increase marketing towards sedentary and lightly active demographics.__
 # 
 # With the FitBit users, we were able to recognize that a majority of users (58.3%) classify under 'sedentary' or 'lightly active' demographics. Even though their products may be most tailored towards highly active individuals, the data suggests that the users buying these products are not always active. In order to maximize sales of their products, broadening their approach to wider demographics can bring in more customers for their products, which down the line can lead to increased membership purchases and even more increased revenue. 
 # 
@@ -1030,7 +1029,7 @@ plt.show()
 # * personalized advice for higher quality sleep for users recognized as having a low sleep quality
 # * develop a smart watch with a touch screen that will track workout data and easily remind users with notifications without having to pull their phones out
 # 
-# __3. Emphase the fashionable aspects of Bellabeat products as well as their long-lasting batteries.__
+# __3. Put more emphasis on the fashionable aspects of Bellabeat products as well as their long-lasting batteries.__
 # 
 # The data shows that, on average, the FitBit users are wearing their devices for the vast majority of the day, including during periods when they are out in public. As a result, emphasizing the great looks of the Bellabeat products will entice potential customers, as customers are looking for a device they can be proud to wear all day. Furthermore, since the users are wearing their devices for long periods of time each day, marketing the long-lasting batteries of Bellabeat products with greater significance will also help to attract more customers, as customers are placing great value on the battery life of their devices. With this in mind, if Bellabeat develops any new products, this value on battery life should be considered every step of the way, such as with a potential new smart watch with a touchscreen. 
 

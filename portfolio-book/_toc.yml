@@ -37,7 +37,3 @@ parts:
     - file: archived_projects/absenteeism_analysis/absentee_analysis_preprocessing
     - file: archived_projects/absenteeism_analysis/absentee_analysis_logistic_regression
     - file: archived_projects/absenteeism_analysis/absentee_integration
-
-# ````{div} full-width
-# ![](file_name.png)
-# ````
