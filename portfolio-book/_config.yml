@@ -33,6 +33,7 @@ html:
   favicon: "favicon.ico"
   use_issues_button: true
   use_repository_button: true
+  google_analytics_id: G-JCPC4TP7JH
   # comments:
   #   utterances:
   #     repo: https://github.com/fahm1/Portfolio   
