@@ -95,26 +95,26 @@
 # Detailed descriptions of each file and column can be found [here](https://www.fitabase.com/media/1930/fitabasedatadictionary102320.pdf).
 # 
 # ```{dropdown} Click here for a table with a description of each CSV file.
-# | Table Name | Type | Description |
-# | --- | --- | --- |
-# | hourlyCalories_merged | CSV | Hourly calories burned over 31 days for 33 users |
-# | dailyCalories_merged | CSV | Daily calories over 31  days for 33 users |
-# | minuteCaloriesNarrow_merged | CSV | Calories burned every minute over 31 days for 33 users (every minute in single row)|
-# | minuteCaloriesWide_merged | CSV | Calories burned every minute over 31 days for 33 users (every minute in single column)|
-# | dailyIntensities_merged | CSV | Daily intensity over 31 days for 33 users. Measured in minutes and distance with 4 distinct categories: Sedentary, Lightly Active, Fairly Active,Very Active |
-# | hourlyIntensities_merged | CSV | Hourly total and average intensity over 31 days for 33 users |
-# | minuteIntensitiesNarrow_merged | CSV | Intensity recorded by minute over 31 days for 33 users (every minute in single row) |
-# | minuteIntensitiesWide_merged | CSV | Intensity recorded by minute over 31 days for 33 users (every minute in single column)|
-# | dailySteps_merged | CSV | Daily steps over 31 days for 33 users | 
-# | hourlySteps_merged | CSV | Hourly steps over 31 days for 33 users |
-# | minuteStepsNarrow_merged | CSV | Steps recorded by minute over 31 days for 33 users (every minute in single row)|
-# | minuteStepsWide_merged | CSV | Steps recorded by minute over 31 days for 33 users (every minute in single column) |
-# | dailyActivity_merged | CSV | Daily activity over 31 days for 33 users. Includes daily steps, distance, intensities, and calories burned |
-# | sleepDay_merged | CSV| Sleep recorded by day, including count for number of sleeping periods per day, total minutes, and total time in bed |
-# | minuteSleep_merged | CSV | Sleep recorded by minute for 24 users over 31 days. Values: 1 = asleep, 2 = restless, 3 = awake in bed |
-# | heartrate_seconds_merged | CSV | Exact day and time heartrate logs for 7 users |
-# | minuteMETsNarrow_merged | CSV | MET or metabolic equivalent of task value recorded in minutes |
-# | weightLogInfo_merged | CSV | Weight and BMI recorded by day in Kg and Pounds over 30 days for 8 users |
+# | Table Name | Description |
+# | --- | --- |
+# | hourlyCalories_merged | Hourly calories burned over 31 days for 33 users |
+# | dailyCalories_merged | Daily calories over 31  days for 33 users |
+# | minuteCaloriesNarrow_merged | Calories burned every minute over 31 days for 33 users (every minute in single row)|
+# | minuteCaloriesWide_merged | Calories burned every minute over 31 days for 33 users (every minute in single column)|
+# | dailyIntensities_merged | Daily intensity over 31 days for 33 users. Measured in minutes and distance with 4 distinct categories: Sedentary, Lightly Active, Fairly Active,Very Active |
+# | hourlyIntensities_merged | Hourly total and average intensity over 31 days for 33 users |
+# | minuteIntensitiesNarrow_merged | Intensity recorded by minute over 31 days for 33 users (every minute in single row) |
+# | minuteIntensitiesWide_merged | Intensity recorded by minute over 31 days for 33 users (every minute in single column)|
+# | dailySteps_merged | Daily steps over 31 days for 33 users | 
+# | hourlySteps_merged | Hourly steps over 31 days for 33 users |
+# | minuteStepsNarrow_merged | Steps recorded by minute over 31 days for 33 users (every minute in single row)|
+# | minuteStepsWide_merged | Steps recorded by minute over 31 days for 33 users (every minute in single column) |
+# | dailyActivity_merged | Daily activity over 31 days for 33 users. Includes daily steps, distance, intensities, and calories burned |
+# | sleepDay_merged | Sleep recorded by day, including count for number of sleeping periods per day, total minutes, and total time in bed |
+# | minuteSleep_merged | Sleep recorded by minute for 24 users over 31 days. Values: 1 = asleep, 2 = restless, 3 = awake in bed |
+# | heartrate_seconds_merged | Exact day and time heartrate logs for 7 users |
+# | minuteMETsNarrow_merged | MET or metabolic equivalent of task value recorded in minutes |
+# | weightLogInfo_merged | Weight and BMI recorded by day in Kg and Pounds over 30 days for 8 users |
 # ```
 # 
 # ### 3.3 Data Integrity
